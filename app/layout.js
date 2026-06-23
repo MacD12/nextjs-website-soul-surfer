@@ -1,3 +1,4 @@
+import "./overrides.css";
 import Scripts from "./Scripts";
 
 // Metadata kept identical to the original export (non-visual).

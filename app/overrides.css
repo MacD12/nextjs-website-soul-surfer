@@ -1,0 +1,12 @@
+/* App-level overrides layered on top of the ported Elementor stylesheet.
+   Kept intentionally small so the original design is untouched. */
+
+/* Smooth in-page navigation for the header anchor menu. */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Anchor targets clear the sticky header (matches SectionAnchors.js). */
+:target {
+  scroll-margin-top: 110px;
+}

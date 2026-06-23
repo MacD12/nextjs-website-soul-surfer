@@ -1,21 +1,18 @@
-import fs from "node:fs";
-import path from "node:path";
+import SiteHeader from "../components/SiteHeader";
+import SiteMain from "../components/SiteMain";
+import SiteFooter from "../components/SiteFooter";
+import SectionAnchors from "../components/SectionAnchors";
 
-// Read the original page's <body> markup (scripts stripped, asset paths rewritten
-// to /assets). This is a Server Component, so the file is read at build/render time
-// and the HTML is sent fully server-rendered — identical to the static page.
-const bodyHtml = fs.readFileSync(
-  path.join(process.cwd(), "data", "body.html"),
-  "utf8"
-);
-
+// The page is now composed from real components — header, main and footer are
+// separate units instead of one monolithic HTML blob. Each is server-rendered
+// (fully SSR'd, SEO-friendly); SectionAnchors is the only client island.
 export default function Page() {
-  // `display:contents` makes this wrapper generate no box, so the injected markup
-  // behaves as if it were a direct child of <body> (no extra layout element).
   return (
-    <div
-      style={{ display: "contents" }}
-      dangerouslySetInnerHTML={{ __html: bodyHtml }}
-    />
+    <>
+      <SiteHeader />
+      <SiteMain />
+      <SiteFooter />
+      <SectionAnchors />
+    </>
   );
 }
