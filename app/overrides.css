@@ -10,3 +10,76 @@ html {
 :target {
   scroll-margin-top: 110px;
 }
+
+/* ---- EN/DE language toggle (injected into the header by LanguageSwitcher) ---- */
+/* Typography matched 1:1 to the nav menu items (.e-n-menu-title-text):
+   Onest 500, 13px, UPPERCASE, 1px tracking, white → mint (#BEF6D1) when active —
+   so EN/DE reads as just another nav link, not a separate control. */
+.ss-lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0 12px;
+  font-family: "Onest", sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #fff;
+  white-space: nowrap;
+  align-self: center;
+}
+
+.ss-lang-btn {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+.ss-lang-btn:hover {
+  opacity: 1;
+  color: #bef6d1;
+}
+
+.ss-lang-btn:focus-visible {
+  outline: none;
+  opacity: 1;
+  color: #bef6d1;
+}
+
+.ss-lang-btn.is-active {
+  opacity: 1;
+  color: #bef6d1; /* mint — mirrors the nav's active link colour */
+}
+
+.ss-lang-sep {
+  width: 1px;
+  height: 10px;
+  background: #fff;
+  opacity: 0.3;
+}
+
+/* Fallback placement if no header is found at runtime. */
+.ss-lang--float {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 100000;
+  margin: 0;
+  padding: 7px 12px;
+  background: rgba(15, 23, 22, 0.45);
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
