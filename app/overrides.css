@@ -1,3 +1,10 @@
+/* Tailwind CSS. Preflight is disabled in tailwind.config.ts, so `base` emits no
+   reset — only the @layer scaffolding — keeping the Elementor design intact while
+   making Tailwind's component/utility classes available across the app. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* App-level overrides layered on top of the ported Elementor stylesheet.
    Kept intentionally small so the original design is untouched. */
 

@@ -5,10 +5,13 @@ import { useEffect } from "react";
 // The original page's scripts, in exact document order. jQuery → Elementor →
 // Elementor Pro, with each *-before/-after config kept adjacent to its script.
 // `async = false` on dynamically-created scripts guarantees in-order execution.
-const SCRIPTS = [
+const SCRIPTS: string[] = [
   "/js/j006-ear-licensing-helper-js-after.js",
   "/js/j007-jquery-core-js.js",
-  "/js/j008-inline.js",
+  // j008-inline.js intentionally omitted — it was a leftover Google Tag Manager
+  // loader (GTM-TGRD8TJ) from the original site. It pulled in Google Ads /
+  // DoubleClick trackers that get blocked by ad-blockers (ERR_BLOCKED_BY_CLIENT)
+  // and threw a removeChild error in GTM's frame_start.js. Not ours — removed.
   "/js/j009-pmcs-1-video-play-fallback-js.js",
   "/js/j011-inline.js",
   "/js/j012-elementor-webpack-runtime-js.js",
@@ -58,8 +61,10 @@ export default function Scripts() {
     // carousels, sticky header and menu still initialise promptly. A `timeout`
     // guarantees it runs even on a busy thread; a one-time interaction listener
     // forces it immediately if the user engages before idle.
-    const ric =
-      window.requestIdleCallback || ((cb) => window.setTimeout(cb, 200));
+    const ric: (cb: () => void, opts?: IdleRequestOptions) => number =
+      typeof window.requestIdleCallback === "function"
+        ? (cb, opts) => window.requestIdleCallback(cb, opts)
+        : (cb) => window.setTimeout(cb, 200);
 
     let started = false;
     const start = () => {
@@ -71,7 +76,8 @@ export default function Scripts() {
     ric(() => start(), { timeout: 2500 });
 
     const onFirstInteraction = () => start();
-    for (const evt of ["pointerdown", "keydown", "touchstart", "scroll"]) {
+    const events: string[] = ["pointerdown", "keydown", "touchstart", "scroll"];
+    for (const evt of events) {
       window.addEventListener(evt, onFirstInteraction, {
         once: true,
         passive: true,

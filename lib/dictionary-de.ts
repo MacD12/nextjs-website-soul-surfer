@@ -7,7 +7,7 @@
 // Proper nouns (Soul Surfer, Weligama, resort/place/person names), social network
 // names, and strings already in German are intentionally omitted — they stay as-is.
 
-const de = {
+const de: Record<string, string> = {
   // ---- Header / navigation ----
   Explore: "Entdecken",
   Activities: "Aktivitäten",

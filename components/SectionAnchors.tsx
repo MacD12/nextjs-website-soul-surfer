@@ -6,7 +6,7 @@ import { useEffect } from "react";
 // (#about, #activities, …) have nothing to target. This component runs once on
 // the client and assigns those semantic IDs to the matching section headings by
 // text, and adds scroll-margin so the sticky header doesn't overlap the target.
-const ANCHORS = [
+const ANCHORS: ReadonlyArray<[string, string]> = [
   ["about", "Soul Surfer Camp"],
   ["packages", "Featured Surf Packages"],
   ["activities", "More than just surf"],
@@ -18,7 +18,9 @@ const ANCHORS = [
 
 export default function SectionAnchors() {
   useEffect(() => {
-    const headings = Array.from(document.querySelectorAll("h1, h2, h3"));
+    const headings = Array.from(
+      document.querySelectorAll<HTMLElement>("h1, h2, h3")
+    );
     for (const [id, text] of ANCHORS) {
       if (document.getElementById(id)) continue;
       const match = headings.find((h) =>

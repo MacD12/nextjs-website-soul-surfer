@@ -6,7 +6,8 @@ import LanguageSwitcher from "../components/LanguageSwitcher";
 
 // The page is now composed from real components — header, main and footer are
 // separate units instead of one monolithic HTML blob. Each is server-rendered
-// (fully SSR'd, SEO-friendly); SectionAnchors is the only client island.
+// (fully SSR'd, SEO-friendly); SectionAnchors and LanguageSwitcher are the only
+// client islands.
 export default function Page() {
   return (
     <>
