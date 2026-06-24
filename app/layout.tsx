@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import "./overrides.css";
+import "./palette.css";
 import Scripts from "./Scripts";
 
 const SITE_TITLE =

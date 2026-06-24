@@ -20,7 +20,7 @@ html {
 
 /* ---- EN/DE language toggle (injected into the header by LanguageSwitcher) ---- */
 /* Typography matched 1:1 to the nav menu items (.e-n-menu-title-text):
-   Onest 500, 13px, UPPERCASE, 1px tracking, white → mint (#BEF6D1) when active —
+   Onest 500, 13px, UPPERCASE, 1px tracking, white → sage (#7E9A82) when active —
    so EN/DE reads as just another nav link, not a separate control. */
 .ss-lang {
   display: inline-flex;
@@ -56,18 +56,18 @@ html {
 
 .ss-lang-btn:hover {
   opacity: 1;
-  color: #bef6d1;
+  color: #7e9a82;
 }
 
 .ss-lang-btn:focus-visible {
   outline: none;
   opacity: 1;
-  color: #bef6d1;
+  color: #7e9a82;
 }
 
 .ss-lang-btn.is-active {
   opacity: 1;
-  color: #bef6d1; /* mint — mirrors the nav's active link colour */
+  color: #7e9a82; /* mint — mirrors the nav's active link colour */
 }
 
 .ss-lang-sep {

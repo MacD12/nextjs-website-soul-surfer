@@ -19,8 +19,14 @@ const config: Config = {
         onest: ['"Onest"', "sans-serif"],
       },
       colors: {
-        // Brand colours pulled from the Elementor global palette.
-        "ss-mint": "#BEF6D1",
+        // Soul Surfer palette — extracted from the reference design.
+        "ss-taupe": "#D7D2C4", // Rooms section background
+        "ss-cream": "#ECE8DD", // light section background
+        "ss-white": "#FFFFFF", // cards & form surfaces
+        "ss-espresso": "#2B2722", // buttons, dark card, headings
+        "ss-cocoa": "#3A362E", // inner dark panels
+        "ss-sage": "#7E9A82", // green accents & eyebrow labels
+        "ss-body": "#6E6A61", // paragraph text
       },
     },
   },
