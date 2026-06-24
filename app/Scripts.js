@@ -2,10 +2,9 @@
 
 import { useEffect } from "react";
 
-// The original page's scripts, in exact document order. Loaded after the markup is
-// in the DOM. `async = false` on dynamically-created scripts guarantees they execute
-// in insertion order (jQuery before Elementor, *-before configs before their script,
-// etc.) — exactly like the original page.
+// The original page's scripts, in exact document order. jQuery → Elementor →
+// Elementor Pro, with each *-before/-after config kept adjacent to its script.
+// `async = false` on dynamically-created scripts guarantees in-order execution.
 const SCRIPTS = [
   "/js/j006-ear-licensing-helper-js-after.js",
   "/js/j007-jquery-core-js.js",
@@ -40,15 +39,43 @@ const SCRIPTS = [
 
 export default function Scripts() {
   useEffect(() => {
-    // Guard against accidental double-injection (e.g. fast refresh).
+    // Guard against double-injection (e.g. fast refresh / strict mode).
     if (window.__soulSurferScriptsLoaded) return;
     window.__soulSurferScriptsLoaded = true;
 
-    for (const src of SCRIPTS) {
-      const s = document.createElement("script");
-      s.src = src;
-      s.async = false; // preserve execution order
-      document.body.appendChild(s);
+    const inject = () => {
+      for (const src of SCRIPTS) {
+        const s = document.createElement("script");
+        s.src = src;
+        s.async = false; // preserve execution order
+        document.body.appendChild(s);
+      }
+    };
+
+    // Defer the ~685 KB jQuery + Elementor bundle until the main thread is idle,
+    // so it no longer competes with first paint / LCP. requestIdleCallback fires
+    // as soon as the browser is free (typically well under a second), so the
+    // carousels, sticky header and menu still initialise promptly. A `timeout`
+    // guarantees it runs even on a busy thread; a one-time interaction listener
+    // forces it immediately if the user engages before idle.
+    const ric =
+      window.requestIdleCallback || ((cb) => window.setTimeout(cb, 200));
+
+    let started = false;
+    const start = () => {
+      if (started) return;
+      started = true;
+      inject();
+    };
+
+    ric(() => start(), { timeout: 2500 });
+
+    const onFirstInteraction = () => start();
+    for (const evt of ["pointerdown", "keydown", "touchstart", "scroll"]) {
+      window.addEventListener(evt, onFirstInteraction, {
+        once: true,
+        passive: true,
+      });
     }
   }, []);
 

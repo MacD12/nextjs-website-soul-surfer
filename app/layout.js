@@ -1,16 +1,43 @@
 import "./overrides.css";
 import Scripts from "./Scripts";
 
-// Metadata kept identical to the original export (non-visual).
+const SITE_TITLE =
+  "Soul Surfer — Independent Boutique Surf Camp in Weligama, Sri Lanka";
+const SITE_DESCRIPTION =
+  "Soul Surfer is an independent boutique surf retreat in Weligama, Sri Lanka — brand-new rooms, a rooftop infinity pool, sea-view dining, and surf weeks for the dedicated surfer.";
+const HERO_IMAGE = "/assets/inline/img-02-17464eee.jpeg";
+const FAVICON =
+  "/assets/www.beyondsenses.de/wp-content/uploads/2025/10/favicon-icon.png";
+
 export const metadata = {
-  title:
-    "Maldives Honeymoons & Sri Lanka Tours | Luxury Travel from the Specialist | Tailor-Made Luxury Tours in Cologne | The Surfer Travel GmbH",
-  description:
-    "Independent boutique surf retreat in Weligama, Sri Lanka — brand-new rooms, a rooftop infinity pool, sea-view dining, and surf weeks for the dedicated surfer.",
-  icons: {
-    icon: "/assets/www.beyondsenses.de/wp-content/uploads/2025/10/favicon-icon.png",
-    apple: "/assets/www.beyondsenses.de/wp-content/uploads/2025/10/favicon-icon.png",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://soulsurfer.example"
+  ),
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+  applicationName: "Soul Surfer",
+  keywords: [
+    "Soul Surfer",
+    "surf camp Weligama",
+    "Sri Lanka surf retreat",
+    "surf and yoga",
+    "Weligama surf lessons",
+  ],
+  icons: { icon: FAVICON, apple: FAVICON },
+  openGraph: {
+    type: "website",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    siteName: "Soul Surfer",
+    images: [{ url: HERO_IMAGE, width: 1920, height: 1080, alt: "Soul Surfer" }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: [HERO_IMAGE],
+  },
+  robots: { index: true, follow: true },
 };
 
 export const viewport = {
@@ -27,6 +54,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        {/* Preload the LCP hero so it starts downloading before the CSS/JS,
+            shaving the largest-contentful-paint time. */}
+        <link
+          rel="preload"
+          as="image"
+          href={HERO_IMAGE}
+          fetchPriority="high"
+        />
         {/* All 49 original stylesheets, concatenated in document order. Served as a
             static file so the cascade and every url(../assets/…) resolve exactly
             as on the original page. */}
