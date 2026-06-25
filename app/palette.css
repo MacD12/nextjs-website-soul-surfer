@@ -53,37 +53,59 @@ body.elementor-kit-6 {
   --e-global-color-ff14445: #c9c9ca;
 }
 
+/* Page base = exact reference taupe (the import shipped a near-identical
+   #d5d1c3). Only transparent content sections — "More than just surf",
+   "Rooftop pool", "Built on 10+", etc. — show this; every section/card with an
+   explicit background overrides it, so no other section is affected. */
+body.elementor-kit-6 {
+  background-color: var(--ss-taupe) !important;
+}
+
 /* The Rooms / packages section carries the warm taupe background. */
 .elementor-element-f5326a3 {
   background-color: var(--ss-taupe) !important;
 }
 
-/* Every section that shipped with a mint (#BEF6D1) background is repainted to
-   the reference cream. Sections sitting behind a full-bleed image are unchanged
-   visually (the image covers the colour); cream is just the reference fallback.
-   `!important` beats the original (non-important) mint rules regardless of their
-   higher specificity. */
+/* SECTIONS that shipped with a mint (#BEF6D1) background → reference cream.
+   These are flat, full-width sections (no border-radius). Sections behind a
+   full-bleed image are unaffected visually (the image covers the colour).
+   `!important` beats the original (non-important) mint rules. */
 .elementor-element-0987203,
 .elementor-element-7445f95,
-.elementor-element-02e6592,
 .elementor-element-94a7a3c,
-.elementor-element-d025734,
-.elementor-element-ded7b41,
-.elementor-element-ef7cb06,
 .elementor-element-72257620,
-.elementor-element-dbea544,
 .elementor-element-5f522f8,
 .elementor-element-97847cd,
 .elementor-element-0987203 .elementor-motion-effects-layer,
 .elementor-element-7445f95 .elementor-motion-effects-layer,
-.elementor-element-02e6592 .elementor-motion-effects-layer,
 .elementor-element-94a7a3c .elementor-motion-effects-layer,
+.elementor-element-72257620 .elementor-motion-effects-layer,
+.elementor-element-5f522f8 .elementor-motion-effects-layer,
+.elementor-element-97847cd .elementor-motion-effects-layer {
+  background-color: var(--ss-cream) !important;
+}
+
+/* CARD bodies are WHITE in the reference (the rounded package/room cards).
+   The section recolour above + the global remap had tinted these rounded card
+   containers cream/sage; restore them to pure white so they read as cards
+   sitting on the taupe/cream sections — exactly like the reference. */
+.elementor-element-efee0bd,
+.elementor-element-3b62ef7,
+.elementor-element-e4926e1,
+.elementor-element-52d36c0,
+.elementor-element-02e6592,
+.elementor-element-d025734,
+.elementor-element-ded7b41,
+.elementor-element-ef7cb06,
+.elementor-element-dbea544,
+.elementor-element-efee0bd .elementor-motion-effects-layer,
+.elementor-element-3b62ef7 .elementor-motion-effects-layer,
+.elementor-element-02e6592 .elementor-motion-effects-layer,
 .elementor-element-d025734 .elementor-motion-effects-layer,
 .elementor-element-ded7b41 .elementor-motion-effects-layer,
 .elementor-element-ef7cb06 .elementor-motion-effects-layer,
-.elementor-element-72257620 .elementor-motion-effects-layer,
 .elementor-element-dbea544 .elementor-motion-effects-layer {
-  background-color: var(--ss-cream) !important;
+  background-color: var(--ss-white) !important;
 }
 
 /* Buttons that shipped with a mint background → reference dark espresso
