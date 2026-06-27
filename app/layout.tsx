@@ -7,6 +7,7 @@ import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
 import SectionAnchors from "../components/SectionAnchors";
 import LanguageSwitcher from "../components/LanguageSwitcher";
+import NavGuard from "../components/NavGuard";
 
 const SITE_TITLE =
   "Soul Surfer — Independent Boutique Surf Camp in Weligama, Sri Lanka";
@@ -92,6 +93,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <SiteFooter />
         <SectionAnchors />
         <LanguageSwitcher />
+        <NavGuard />
         <Scripts />
       </body>
     </html>
