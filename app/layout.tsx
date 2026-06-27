@@ -3,6 +3,10 @@ import type { ReactNode } from "react";
 import "./overrides.css";
 import "./palette.css";
 import Scripts from "./Scripts";
+import SiteHeader from "../components/SiteHeader";
+import SiteFooter from "../components/SiteFooter";
+import SectionAnchors from "../components/SectionAnchors";
+import LanguageSwitcher from "../components/LanguageSwitcher";
 
 const SITE_TITLE =
   "Soul Surfer — Independent Boutique Surf Camp in Weligama, Sri Lanka";
@@ -80,7 +84,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <link rel="stylesheet" href="/css/app.css" />
       </head>
       <body className={BODY_CLASS} data-elementor-device-mode="tablet">
+        {/* Shared chrome — header + footer + the client islands wrap every page,
+            so sub-pages reuse the exact same navigation and footer as the home
+            page (identical look & behaviour). */}
+        <SiteHeader />
         {children}
+        <SiteFooter />
+        <SectionAnchors />
+        <LanguageSwitcher />
         <Scripts />
       </body>
     </html>
