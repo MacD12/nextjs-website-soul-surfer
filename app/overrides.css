@@ -8,6 +8,14 @@
 /* App-level overrides layered on top of the ported Elementor stylesheet.
    Kept intentionally small so the original design is untouched. */
 
+/* Remove the placeholder "View all" buttons (dead links to "#") — Featured
+   Surf Packages (c040ac2 / 6277386) and the reviews section (8b4fbf9). */
+.elementor-element-c040ac2,
+.elementor-element-6277386,
+.elementor-element-8b4fbf9 {
+  display: none !important;
+}
+
 /* Smooth in-page navigation for the header anchor menu. */
 html {
   scroll-behavior: smooth;

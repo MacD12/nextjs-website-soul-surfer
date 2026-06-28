@@ -31,14 +31,14 @@ export default function BookingCTA({
         <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
           <a
             href={ctaHref}
-            className="inline-block rounded-full bg-ss-cream px-9 py-3.5 font-onest text-sm font-semibold uppercase tracking-wide text-ss-espresso transition-colors hover:bg-white"
+            className="inline-block rounded-full bg-ss-cream px-9 py-3.5 font-onest text-sm font-semibold uppercase tracking-wide text-ss-espresso no-underline transition-colors hover:bg-white"
           >
             {ctaLabel}
           </a>
           {secondaryLabel && secondaryHref ? (
             <a
               href={secondaryHref}
-              className="inline-block rounded-full border border-white/30 px-9 py-3.5 font-onest text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:border-white/70"
+              className="inline-block rounded-full border border-white/30 px-9 py-3.5 font-onest text-sm font-semibold uppercase tracking-wide text-white no-underline transition-colors hover:border-white/70"
             >
               {secondaryLabel}
             </a>

@@ -11,7 +11,10 @@ export default function Breadcrumbs({
         {items.map((item, i) => (
           <li key={`${item.label}-${i}`} className="flex items-center gap-2.5">
             {item.href ? (
-              <a href={item.href} className="transition-colors hover:text-ss-espresso">
+              <a
+                href={item.href}
+                className="no-underline transition-colors hover:text-ss-espresso"
+              >
                 {item.label}
               </a>
             ) : (

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
+import Script from "next/script";
 import "./overrides.css";
 import "./palette.css";
 import Scripts from "./Scripts";
@@ -69,6 +70,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
+        {/* Runs before Next's dev error overlay registers its listeners, so it
+            can swallow the (non-fatal) ChunkLoadError thrown when Elementor tries
+            to lazy-load widget-handler chunks from the original site's URL — those
+            hashed chunks no longer exist (404). Scoped to Elementor/beyondsenses
+            chunk failures only, so genuine Next.js chunk errors still surface. */}
+        <Script id="elementor-chunk-error-guard" strategy="beforeInteractive">
+          {`(function(){function isElChunkErr(x){if(!x)return false;var m=String(x.message||x);return /Loading chunk/.test(m)&&/(beyondsenses\\.de|elementor)/i.test(m);}window.addEventListener("error",function(e){if(isElChunkErr(e.error)||(/Loading chunk/.test(String(e.message||""))&&/(beyondsenses\\.de|elementor)/i.test(String(e.message||"")))){e.preventDefault();e.stopImmediatePropagation();}},true);window.addEventListener("unhandledrejection",function(e){if(isElChunkErr(e.reason)){e.preventDefault();e.stopImmediatePropagation();}},true);})();`}
+        </Script>
         {/* Preload the LCP hero so it starts downloading before the CSS/JS,
             shaving the largest-contentful-paint time. */}
         <link
