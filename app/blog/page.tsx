@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import PageHero from "../../components/PageHero";
+import Breadcrumbs from "../../components/Breadcrumbs";
+import BookingCTA from "../../components/BookingCTA";
 
 export const metadata: Metadata = {
   title: "Soul Surfer Diary — Blog",
@@ -41,6 +43,7 @@ export default function BlogPage() {
         title="Soul Surfer Diary"
         subtitle="Stories, surf reports and slices of camp life from Weligama. Fresh entries are on the way."
       />
+      <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Blog" }]} />
 
       <section className="bg-ss-taupe">
         <div className="mx-auto max-w-6xl px-6 py-20">
@@ -75,6 +78,15 @@ export default function BlogPage() {
           </div>
         </div>
       </section>
+
+      <BookingCTA
+        title="Less reading, more surfing?"
+        text="Skip ahead and plan your week in Weligama — rooms, packages and rates are ready when you are."
+        ctaLabel="See packages"
+        ctaHref="/rooms"
+        secondaryLabel="View rates"
+        secondaryHref="/rates"
+      />
     </>
   );
 }

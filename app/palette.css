@@ -74,15 +74,20 @@ body.elementor-kit-6 {
 .elementor-element-7445f95,
 .elementor-element-94a7a3c,
 .elementor-element-72257620,
-.elementor-element-5f522f8,
-.elementor-element-97847cd,
 .elementor-element-0987203 .elementor-motion-effects-layer,
 .elementor-element-7445f95 .elementor-motion-effects-layer,
 .elementor-element-94a7a3c .elementor-motion-effects-layer,
-.elementor-element-72257620 .elementor-motion-effects-layer,
-.elementor-element-5f522f8 .elementor-motion-effects-layer,
-.elementor-element-97847cd .elementor-motion-effects-layer {
+.elementor-element-72257620 .elementor-motion-effects-layer {
   background-color: var(--ss-cream) !important;
+}
+
+/* The button WIDGETS 5f522f8 / 97847cd carried the mint only on their inner
+   <a class="elementor-button"> (set to espresso below). Their widget containers
+   must stay transparent — giving them a fill produced an empty coloured bar
+   beside the button. Force transparent to be safe. */
+.elementor-element-5f522f8,
+.elementor-element-97847cd {
+  background-color: transparent !important;
 }
 
 /* CARD bodies are WHITE in the reference (the rounded package/room cards).

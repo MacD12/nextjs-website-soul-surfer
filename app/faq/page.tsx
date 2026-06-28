@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import PageHero from "../../components/PageHero";
+import Breadcrumbs from "../../components/Breadcrumbs";
 import PageSections from "../../components/PageSections";
+import BookingCTA from "../../components/BookingCTA";
 
 export const metadata: Metadata = {
   title: "FAQ — Soul Surfer",
@@ -13,10 +15,19 @@ export default function FaqPage() {
     <>
       <PageHero
         eyebrow="Good to know"
-        title="Frequently Asked Questions"
+        title="Questions & Answers"
         subtitle="Everything you might want to know before you book your surf week with Soul Surfer."
       />
+      <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "FAQ" }]} />
       <PageSections blocks={["faq"]} />
+      <BookingCTA
+        title="Still have a question?"
+        text="Can't find what you're looking for? Our team is happy to help you plan the perfect surf week."
+        ctaLabel="Plan your trip"
+        ctaHref="/rates"
+        secondaryLabel="See the rooms"
+        secondaryHref="/rooms"
+      />
     </>
   );
 }
