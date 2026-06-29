@@ -34,14 +34,14 @@ const de: Record<string, string> = {
   // ---- Featured packages ----
   "Featured Surf Packages": "Ausgewählte Surf-Pakete",
   "Moderate Surf / Guiding": "Moderates Surfen / Guiding",
-  "Six surf lessons a week with guiding, two yoga sessions, theory classes, video analysis, and daily social activities. 7 nights · 06 lessons · from 390€ per person":
-    "Sechs Surfstunden pro Woche mit Guiding, zwei Yoga-Einheiten, Theoriekurse, Videoanalyse und tägliche Gemeinschaftsaktivitäten. 7 Nächte · 06 Stunden · ab 390€ pro Person",
+  "Six surf lessons a week with guiding, two yoga sessions, theory classes, video analysis, and daily social activities. 7 nights · 6 lessons · from €390 per person":
+    "Sechs Surfstunden pro Woche mit Guiding, zwei Yoga-Einheiten, Theoriekurse, Videoanalyse und tägliche Gemeinschaftsaktivitäten. 7 Nächte · 6 Stunden · ab €390 pro Person",
   "Surf & Yoga Package": "Surf- & Yoga-Paket",
-  "Six surf lessons a week paired with sunrise or sunset yoga every day — balance, breath, and waves. 7 nights · 06 lessons + daily yoga · from 450€ per person":
-    "Sechs Surfstunden pro Woche, kombiniert mit täglichem Yoga bei Sonnenauf- oder -untergang — Balance, Atem und Wellen. 7 Nächte · 06 Stunden + tägliches Yoga · ab 450€ pro Person",
+  "Six surf lessons a week paired with sunrise or sunset yoga every day — balance, breath, and waves. 7 nights · 6 lessons + daily yoga · from €450 per person":
+    "Sechs Surfstunden pro Woche, kombiniert mit täglichem Yoga bei Sonnenauf- oder -untergang — Balance, Atem und Wellen. 7 Nächte · 6 Stunden + tägliches Yoga · ab €450 pro Person",
   "Full Surf Package": "Komplettes Surf-Paket",
-  "Eleven surf lessons, two yoga sessions, theory, video analysis, and daily social activities for the dedicated surfer. 7 nights · 11 lessons · from 490€ per person":
-    "Elf Surfstunden, zwei Yoga-Einheiten, Theorie, Videoanalyse und tägliche Gemeinschaftsaktivitäten für den passionierten Surfer. 7 Nächte · 11 Stunden · ab 490€ pro Person",
+  "Eleven surf lessons, two yoga sessions, theory, video analysis, and daily social activities for the dedicated surfer. 7 nights · 11 lessons · from €490 per person":
+    "Elf Surfstunden, zwei Yoga-Einheiten, Theorie, Videoanalyse und tägliche Gemeinschaftsaktivitäten für den passionierten Surfer. 7 Nächte · 11 Stunden · ab €490 pro Person",
   "Mixed Dormitory": "Gemischter Schlafsaal",
   "Great for solo travelers who love meeting fellow surfers. Up to 6 guests. Boutique-style dorm":
     "Ideal für Alleinreisende, die gerne andere Surfer kennenlernen. Bis zu 6 Gäste. Schlafsaal im Boutique-Stil",
@@ -59,9 +59,9 @@ const de: Record<string, string> = {
   "13 days": "13 Tage",
   "15 days": "15 Tage",
   "Price from": "Preis ab",
-  "€12330 per person": "12.330€ pro Person",
-  "€4,340 per person": "4.340€ pro Person",
-  "€4330 per person": "4.330€ pro Person",
+  "€390 per person": "€390 pro Person",
+  "€450 per person": "€450 pro Person",
+  "€490 per person": "€490 pro Person",
   New: "Neu",
 
   // ---- About the camp ----
@@ -151,12 +151,13 @@ const de: Record<string, string> = {
   // ---- Rates table ----
   "Surf Packages & Weekly Rates": "Surf-Pakete & Wochenpreise",
   "Surf Lessons": "Surfstunden",
-  "06 lessons per week": "06 Stunden pro Woche",
+  "6 lessons per week": "6 Stunden pro Woche",
+  "11 lessons per week": "11 Stunden pro Woche",
   "11 lessons": "11 Stunden",
   Yoga: "Yoga",
-  "02 sessions per week": "02 Einheiten pro Woche",
+  "2 sessions per week": "2 Einheiten pro Woche",
   "Sunrise or sunset every day": "Täglich bei Sonnenauf- oder -untergang",
-  "07 nights accommodation": "07 Nächte Unterkunft",
+  "7 nights accommodation": "7 Nächte Unterkunft",
   "Breakfast every day": "Frühstück täglich",
   "Dinner (every day except Sunday)": "Abendessen (täglich außer sonntags)",
   "Surf Theory Classes": "Surftheorie-Kurse",
@@ -165,17 +166,17 @@ const de: Record<string, string> = {
   "Pricing — total per week / per night (EUR)":
     "Preise — gesamt pro Woche / pro Nacht (EUR)",
   "Mixed Dormitory Bed (max 5)": "Bett im gemischten Schlafsaal (max. 5)",
-  "/ 55.71€ night": "/ 55,71€ Nacht",
-  "/ 64.29€ night": "/ 64,29€ Nacht",
-  "/ 70.00€ night": "/ 70,00€ Nacht",
+  "/ €55.71 night": "/ €55,71 Nacht",
+  "/ €64.29 night": "/ €64,29 Nacht",
+  "/ €70.00 night": "/ €70,00 Nacht",
   "Private Single Room (per week)": "Privates Einzelzimmer (pro Woche)",
-  "/ 98.57€ night": "/ 98,57€ Nacht",
-  "/ 107.14€ night": "/ 107,14€ Nacht",
-  "/ 112.86€ night": "/ 112,86€ Nacht",
+  "/ €98.57 night": "/ €98,57 Nacht",
+  "/ €107.14 night": "/ €107,14 Nacht",
+  "/ €112.86 night": "/ €112,86 Nacht",
   "Private Double / Twin Room (per person)":
     "Privates Doppel-/Zweibettzimmer (pro Person)",
-  "/ 78.57€ night": "/ 78,57€ Nacht",
-  "/ 84.29€ night": "/ 84,29€ Nacht",
+  "/ €78.57 night": "/ €78,57 Nacht",
+  "/ €84.29 night": "/ €84,29 Nacht",
 
   // ---- FAQ ----
   "Frequently Asked Questions": "Häufig gestellte Fragen",
@@ -208,6 +209,9 @@ const de: Record<string, string> = {
   "Soul Surfer Diary": "Soul Surfer Tagebuch",
   "Terms and Conditions": "AGB",
   Sitemap: "Sitemap",
+  "Read more": "Weiterlesen",
+  "7 nights": "7 Nächte",
+  "8 days": "8 Tage",
   "© 2026 The Surfer. All rights reserved.":
     "© 2026 The Surfer. Alle Rechte vorbehalten.",
   "Experience crafted by StudioColart · Platform powered by BeddleHub":

@@ -73,12 +73,17 @@ body.elementor-kit-6 {
 .elementor-element-0987203,
 .elementor-element-7445f95,
 .elementor-element-94a7a3c,
-.elementor-element-72257620,
 .elementor-element-0987203 .elementor-motion-effects-layer,
 .elementor-element-7445f95 .elementor-motion-effects-layer,
-.elementor-element-94a7a3c .elementor-motion-effects-layer,
-.elementor-element-72257620 .elementor-motion-effects-layer {
+.elementor-element-94a7a3c .elementor-motion-effects-layer {
   background-color: var(--ss-cream) !important;
+}
+
+/* "Why surf with Soul Surfer?" section (the four icon boxes) — taupe #D7D2C4
+   per request, so it reads as a distinct band between the cream sections. */
+.elementor-element-72257620,
+.elementor-element-72257620 .elementor-motion-effects-layer {
+  background-color: var(--ss-taupe) !important;
 }
 
 /* The button WIDGETS 5f522f8 / 97847cd carried the mint only on their inner
@@ -100,17 +105,28 @@ body.elementor-kit-6 {
 .elementor-element-52d36c0,
 .elementor-element-02e6592,
 .elementor-element-d025734,
-.elementor-element-ded7b41,
-.elementor-element-ef7cb06,
 .elementor-element-dbea544,
 .elementor-element-efee0bd .elementor-motion-effects-layer,
 .elementor-element-3b62ef7 .elementor-motion-effects-layer,
 .elementor-element-02e6592 .elementor-motion-effects-layer,
 .elementor-element-d025734 .elementor-motion-effects-layer,
-.elementor-element-ded7b41 .elementor-motion-effects-layer,
-.elementor-element-ef7cb06 .elementor-motion-effects-layer,
 .elementor-element-dbea544 .elementor-motion-effects-layer {
   background-color: var(--ss-white) !important;
+}
+
+/* Activities section — "More than just surf", "Rooftop pool & sea-view dining"
+   and "Built on 10+ years" (loop-9175). These are NOT cards; ded7b41 (text col)
+   and ef7cb06 (image col) were mistakenly painted white earlier. Repaint the
+   whole section cream (#ECE8DD) and let the columns show it through. */
+.elementor-element-fa11123,
+.elementor-element-fa11123 .elementor-motion-effects-layer {
+  background-color: var(--ss-cream) !important;
+}
+.elementor-element-ded7b41,
+.elementor-element-ef7cb06,
+.elementor-element-ded7b41 .elementor-motion-effects-layer,
+.elementor-element-ef7cb06 .elementor-motion-effects-layer {
+  background-color: transparent !important;
 }
 
 /* Buttons that shipped with a mint background → reference dark espresso
@@ -119,6 +135,20 @@ body.elementor-kit-6 {
 .elementor-element-e819f97 .elementor-button,
 .elementor-element-97847cd .elementor-button {
   background-color: var(--ss-espresso) !important;
+}
+/* …and their labels/icons were inheriting the green accent (near-invisible on
+   espresso, so the buttons looked blank). Force white. */
+.elementor-element-5f522f8 .elementor-button,
+.elementor-element-e819f97 .elementor-button,
+.elementor-element-97847cd .elementor-button,
+.elementor-element-5f522f8 .elementor-button .elementor-button-text,
+.elementor-element-97847cd .elementor-button .elementor-button-text {
+  color: #ffffff !important;
+}
+.elementor-element-5f522f8 .elementor-button svg,
+.elementor-element-e819f97 .elementor-button svg,
+.elementor-element-97847cd .elementor-button svg {
+  fill: #ffffff !important;
 }
 
 /* TrustIndex Google-reviews widget — its "verified by Google" badge ships a
