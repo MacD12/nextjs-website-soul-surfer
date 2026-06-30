@@ -8,6 +8,20 @@
 /* App-level overrides layered on top of the ported Elementor stylesheet.
    Kept intentionally small so the original design is untouched. */
 
+/* Hidden per request: the entire "Here's what our guests say" reviews section
+   (the testimonial image + quote + Google-reviews widget). Kept in the markup
+   so it's easy to bring back — just delete this rule to un-hide it. */
+.elementor-element-5c5c740 {
+  display: none !important;
+}
+
+/* Hidden per request: "Surf Packages & Weekly Rates" on the HOME page only.
+   This `.ss-rates` wrapper exists solely on the homepage; the dedicated /rates
+   page renders the table without it, so /rates is unaffected. Delete to restore. */
+.ss-rates {
+  display: none !important;
+}
+
 /* Remove the placeholder "View all" buttons (dead links to "#") — Featured
    Surf Packages (c040ac2 / 6277386) and the reviews section (8b4fbf9). */
 .elementor-element-c040ac2,
