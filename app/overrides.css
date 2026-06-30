@@ -44,6 +44,271 @@
   content: none !important;
 }
 
+/* ===== Mobile navigation (custom, reliable) =====
+   The ported Elementor menu is desktop-only and its responsive hamburger is
+   broken, so we ship our own burger + slide-in panel for <=1024px (exactly where
+   the desktop menu is hidden). The desktop nav above 1024px is untouched. */
+
+.ss-burger {
+  /* Hidden on desktop. !important beats Elementor's header <button> styling,
+     which otherwise leaked the burger onto desktop as a dark pill. */
+  display: none !important;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  margin: 0 4px;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  color: #fff;
+  z-index: 1001;
+}
+.ss-burger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor; /* white, matches the nav text over the hero */
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
+  transition: transform 0.28s ease, opacity 0.2s ease;
+}
+@media (max-width: 1024px) {
+  .ss-burger {
+    display: inline-flex !important;
+  }
+}
+/* ===== Mobile / tablet header cleanup (<=1024px) =====
+   The ported Elementor header carries a SECOND, dead mobile menu: two desktop-
+   hidden icon widgets (one opens an empty popup) that render as a stray ☰ near
+   the logo — a duplicate of our burger. It also stretches the EN/DE toggle into
+   Elementor "button" pills and keeps an inline Book Now that crowds the bar.
+   On <=1024px we strip all of that to a clean bar: logo + compact EN/DE + burger.
+   (Book Now lives in the slide-in panel.) */
+@media (max-width: 1024px) {
+  /* dead duplicate hamburger / empty-popup triggers */
+  header .elementor-element-991e1d5,
+  header .elementor-element-d6a281d {
+    display: none !important;
+  }
+  /* inline Book Now — it's the full-width button inside the slide-in panel */
+  header .elementor-element-813d41d {
+    display: none !important;
+  }
+  /* EN/DE: strip the stray button pill, keep a small clean text toggle */
+  .ss-lang {
+    margin: 0 4px !important;
+    gap: 6px !important;
+    background: transparent !important;
+  }
+  .ss-lang-btn {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    min-width: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    font-size: 13px !important;
+  }
+}
+
+/* Burger morphs into an X while the panel is open */
+body.ss-mnav-active .ss-burger span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+body.ss-mnav-active .ss-burger span:nth-child(2) {
+  opacity: 0;
+}
+body.ss-mnav-active .ss-burger span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.ss-mnav {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  visibility: hidden;
+  pointer-events: none;
+}
+.ss-mnav-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 18, 15, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.ss-mnav-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: min(84vw, 340px);
+  box-sizing: border-box;
+  padding: 92px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  background: var(--ss-cream, #ece8dd);
+  box-shadow: -14px 0 44px rgba(0, 0, 0, 0.25);
+  transform: translateX(100%);
+  transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+}
+body.ss-mnav-active .ss-mnav {
+  visibility: visible;
+  pointer-events: auto;
+}
+body.ss-mnav-active .ss-mnav-backdrop {
+  opacity: 1;
+}
+body.ss-mnav-active .ss-mnav-panel {
+  transform: translateX(0);
+}
+body.ss-mnav-active {
+  overflow: hidden;
+}
+.ss-mnav-x {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 40px;
+  height: 40px;
+  font-size: 30px;
+  line-height: 1;
+  background: transparent;
+  border: 0;
+  color: var(--ss-espresso, #2b2722);
+  cursor: pointer;
+}
+.ss-mnav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.ss-mnav-list a {
+  display: block;
+  padding: 15px 4px;
+  font-family: "Onest", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--ss-espresso, #2b2722);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  transition: color 0.2s ease;
+}
+.ss-mnav-list a:hover,
+.ss-mnav-list a:focus {
+  color: var(--ss-sage, #7e9a82);
+}
+.ss-mnav-book {
+  margin-top: auto;
+  display: block;
+  text-align: center;
+  padding: 15px 20px;
+  border-radius: 999px;
+  background: var(--ss-espresso, #2b2722);
+  color: #fff;
+  font-family: "Onest", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* ===== Per-room image gallery =====
+   Turns each Featured Rooms card's single image into a click-through gallery
+   (arrows + dots). Fills the card's absolutely-positioned image widget. Dots sit
+   bottom-right so they clear the "New" badge at bottom-left. */
+.ss-gal {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.ss-gal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.ss-gal-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.82);
+  color: #2b2722;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease, background 0.2s ease;
+  z-index: 3;
+}
+.ss-gal:hover .ss-gal-nav {
+  opacity: 1;
+}
+.ss-gal-nav:hover {
+  background: #fff;
+}
+.ss-gal-prev {
+  left: 10px;
+}
+.ss-gal-next {
+  right: 10px;
+}
+.ss-gal-dots {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: flex;
+  gap: 6px;
+  z-index: 3;
+}
+.ss-gal-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.ss-gal-dot.is-active {
+  background: #fff;
+  transform: scale(1.3);
+}
+
+/* Section sub-headers: a supporting line that sits directly under a section
+   title (e.g. the Featured Surf Packages / Featured Rooms carousels). Muted body
+   colour, left-aligned under the H2, with comfortable measure. */
+.ss-subhead {
+  font-family: "Onest", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 400;
+  color: var(--ss-body);
+  margin: 6px 0 0;
+  max-width: 620px;
+}
+
 /* Hero contact row: put email + address on the LEFT and the "Created by The
    Surfer Surf Camps franchise" credit on the RIGHT, all on one line. The credit
    widget sits first in the DOM, so `order` pushes it to the right edge. Wraps to

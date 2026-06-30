@@ -9,6 +9,8 @@ import SiteFooter from "../components/SiteFooter";
 import SectionAnchors from "../components/SectionAnchors";
 import LanguageSwitcher from "../components/LanguageSwitcher";
 import NavGuard from "../components/NavGuard";
+import MobileNav from "../components/MobileNav";
+import RoomGallery from "../components/RoomGallery";
 import StructuredData from "../components/StructuredData";
 
 const SITE_TITLE =
@@ -105,6 +107,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <SectionAnchors />
         <LanguageSwitcher />
         <NavGuard />
+        <MobileNav />
+        <RoomGallery />
         <Scripts />
       </body>
     </html>

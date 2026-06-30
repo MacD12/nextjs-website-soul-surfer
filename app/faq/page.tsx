@@ -3,6 +3,7 @@ import PageHero from "../../components/PageHero";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import PageSections from "../../components/PageSections";
 import BookingCTA from "../../components/BookingCTA";
+import FaqSchema from "../../components/FaqSchema";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/faq" },
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
 export default function FaqPage() {
   return (
     <>
+      <FaqSchema />
       <PageHero
         eyebrow="Good to know"
         title="Questions & Answers"
