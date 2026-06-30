@@ -15,6 +15,35 @@
   display: none !important;
 }
 
+/* Clean nav: the desktop menu items (Explore/Activities/Rooms/Blogs) still carry
+   the original site's dead mega-menu dropdowns. The kit hides the panels, but the
+   menu JS re-opens them on hover — flashing a dark strip + a triangle pointer
+   below the bar. Collapse the panels by every means (JS-set inline display can
+   beat a plain display:none) and remove any pointer pseudo-element. This only
+   touches the dropdown content, never the visible nav links. */
+.elementor-element-9807f32 .e-n-menu-content {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  max-height: 0 !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+.elementor-element-9807f32 .e-n-menu-content::before,
+.elementor-element-9807f32 .e-n-menu-content::after,
+.elementor-element-9807f32 .e-n-menu-item::before,
+.elementor-element-9807f32 .e-n-menu-item::after,
+.elementor-element-9807f32 .e-n-menu-title::before,
+.elementor-element-9807f32 .e-n-menu-wrapper::before,
+.elementor-element-9807f32 .e-n-menu-wrapper::after {
+  display: none !important;
+  content: none !important;
+}
+
 /* Hidden per request: "Surf Packages & Weekly Rates" on the HOME page only.
    This `.ss-rates` wrapper exists solely on the homepage; the dedicated /rates
    page renders the table without it, so /rates is unaffected. Delete to restore. */
