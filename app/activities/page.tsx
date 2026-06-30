@@ -5,6 +5,7 @@ import PageSections from "../../components/PageSections";
 import BookingCTA from "../../components/BookingCTA";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/activities" },
   title: "Activities — Soul Surfer",
   description:
     "More than just surf — boat parties, beach days, yoga, the rooftop pool and a camp that runs on its own rhythm in Weligama.",

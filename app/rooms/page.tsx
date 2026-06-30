@@ -6,6 +6,7 @@ import TrustStrip from "../../components/TrustStrip";
 import BookingCTA from "../../components/BookingCTA";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/rooms" },
   title: "Rooms & Packages — Soul Surfer",
   description:
     "Boutique-style rooms and surf packages at Soul Surfer Camp, Weligama — from mixed dormitories to private ensuite rooms.",

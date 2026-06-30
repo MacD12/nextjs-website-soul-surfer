@@ -6,6 +6,7 @@ import TrustStrip from "../../components/TrustStrip";
 import BookingCTA from "../../components/BookingCTA";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/explore" },
   title: "Explore the Camp — Soul Surfer",
   description:
     "An independent boutique surf retreat in Weligama, Sri Lanka — its own location, a rooftop infinity pool and sea-view dining, built on 10+ years of The Surfer.",

@@ -44,6 +44,30 @@
   content: none !important;
 }
 
+/* Hero contact row: put email + address on the LEFT and the "Created by The
+   Surfer Surf Camps franchise" credit on the RIGHT, all on one line. The credit
+   widget sits first in the DOM, so `order` pushes it to the right edge. Wraps to
+   stacked on narrow screens. */
+.elementor-element-3531dfa > .e-con-inner {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap;
+  gap: 10px 32px;
+}
+.elementor-element-3531dfa > .e-con-inner .ss-hero-credit-widget {
+  order: 2;
+}
+
+/* FAQ section background → taupe (#D7D2C4) per request. Scoped to .ss-faq, which
+   exists only on the homepage (the /faq page uses .ss-inner without this wrapper),
+   so /faq is unaffected. Higher specificity + !important beats the .ss-section
+   default (#fff). */
+.ss-section.ss-faq {
+  background-color: var(--ss-taupe) !important;
+}
+
 /* Hidden per request: "Surf Packages & Weekly Rates" on the HOME page only.
    This `.ss-rates` wrapper exists solely on the homepage; the dedicated /rates
    page renders the table without it, so /rates is unaffected. Delete to restore. */

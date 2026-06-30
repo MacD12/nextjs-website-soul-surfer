@@ -5,6 +5,7 @@ import PageSections from "../../components/PageSections";
 import BookingCTA from "../../components/BookingCTA";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/rates" },
   title: "Rates — Soul Surfer",
   description:
     "Surf packages and weekly rates at Soul Surfer Camp, Weligama — lessons, yoga, accommodation and full pricing per week and per night.",

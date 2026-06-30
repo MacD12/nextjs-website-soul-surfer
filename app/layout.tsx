@@ -9,6 +9,7 @@ import SiteFooter from "../components/SiteFooter";
 import SectionAnchors from "../components/SectionAnchors";
 import LanguageSwitcher from "../components/LanguageSwitcher";
 import NavGuard from "../components/NavGuard";
+import StructuredData from "../components/StructuredData";
 
 const SITE_TITLE =
   "Soul Surfer — Independent Boutique Surf Camp in Weligama, Sri Lanka";
@@ -92,6 +93,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             static file so the cascade and every url(../assets/…) resolve exactly
             as on the original page. */}
         <link rel="stylesheet" href="/css/app.css" />
+        <StructuredData />
       </head>
       <body className={BODY_CLASS} data-elementor-device-mode="tablet">
         {/* Shared chrome — header + footer + the client islands wrap every page,

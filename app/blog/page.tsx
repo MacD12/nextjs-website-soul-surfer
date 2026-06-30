@@ -4,6 +4,7 @@ import Breadcrumbs from "../../components/Breadcrumbs";
 import BookingCTA from "../../components/BookingCTA";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/blog" },
   title: "Soul Surfer Diary — Blog",
   description:
     "Stories, surf reports and camp life from Soul Surfer in Weligama, Sri Lanka.",

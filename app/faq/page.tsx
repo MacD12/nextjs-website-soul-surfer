@@ -5,6 +5,7 @@ import PageSections from "../../components/PageSections";
 import BookingCTA from "../../components/BookingCTA";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/faq" },
   title: "FAQ — Soul Surfer",
   description:
     "Frequently asked questions about Soul Surfer Camp in Weligama — how it differs from the Beach Camp and TS2, surf levels, facilities and more.",
