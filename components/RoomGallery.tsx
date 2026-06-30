@@ -12,21 +12,24 @@ import { useEffect } from "react";
 // the same resilient pattern as the other client islands. The design is untouched
 // aside from swapping the single image widget for the gallery.
 
+// Self-hosted sample room photos (downloaded into /public/assets/rooms). Each
+// room type gets three relevant images. Swap these paths for the real room photos
+// whenever they're available.
 const GALLERIES: Record<string, string[]> = {
   "mixed dormitory": [
-    "/assets/inline/img-03-e75d08e6.webp",
-    "/assets/inline/img-04-7cb8971c.webp",
-    "/assets/inline/img-05-d86cdf08.webp",
+    "/assets/rooms/dorm-1.jpg",
+    "/assets/rooms/dorm-2.jpg",
+    "/assets/rooms/dorm-3.jpg",
   ],
   "private single room ensuite": [
-    "/assets/inline/img-06-0a388b7d.jpeg",
-    "/assets/inline/img-07-af2d38b4.webp",
-    "/assets/inline/img-08-255fef5b.jpeg",
+    "/assets/rooms/single-1.jpg",
+    "/assets/rooms/single-2.jpg",
+    "/assets/rooms/single-3.jpg",
   ],
   "private double / twin room ensuite": [
-    "/assets/inline/img-09-aa8e51c2.webp",
-    "/assets/inline/img-10-bb9bac83.webp",
-    "/assets/inline/img-11-254e8e7a.webp",
+    "/assets/rooms/double-1.jpg",
+    "/assets/rooms/double-2.jpg",
+    "/assets/rooms/double-3.jpg",
   ],
 };
 
