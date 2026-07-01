@@ -59,17 +59,6 @@ const CATEGORIES = [
   },
 ];
 
-// A genuine day-in-the-life outline — unique content that can't be copied.
-const DAY = [
-  { time: "Dawn", label: "First-light check", text: "We read the bay at sunrise. Keen surfers head out for the dawn patrol while the line-up is empty and glassy." },
-  { time: "Morning", label: "Guided surf session", text: "The main session — coached, at the day's best peak, matched to your level. Photos and clips get taken for later." },
-  { time: "Late morning", label: "Breakfast & theory", text: "Refuel on the rooftop, then a theory or video-analysis session to unpack what happened in the water." },
-  { time: "Midday", label: "Free time", text: "Float in the pool, nap in a hammock, wander into town — the hottest hours are yours." },
-  { time: "Afternoon", label: "Second surf or yoga", text: "A second paddle-out as the wind swings offshore, or a mobility and yoga session on the roof." },
-  { time: "Evening", label: "Sunset & dinner", text: "A golden-hour session, then dinner with the crew as the sky goes pink over the coast." },
-  { time: "Night", label: "Camp social", text: "Some nights it's a boat party, some nights just good conversation and a cold drink. Every night, new friends." },
-];
-
 // The four signature experiences — the reasons guests remember Soul Surfer. Each
 // carries a short "why it matters" line so it reads as a headline activity, not
 // just a photo.
@@ -249,72 +238,8 @@ export default function ActivitiesPage() {
         </div>
       </section>
 
-      {/* A day in the life — the unique, uncopyable content */}
-      <section className="bg-ss-taupe">
-        <div className="mx-auto max-w-4xl px-6 py-24">
-          <div className="mb-12 text-center">
-            <p className="font-onest text-[11px] font-semibold uppercase tracking-[2px] text-ss-sage">
-              Our rhythm
-            </p>
-            <h2 className="mt-4 font-onest text-3xl font-semibold text-ss-espresso sm:text-[36px]">
-              A day in the life
-            </h2>
-            <p className="mx-auto mt-3 max-w-xl font-onest text-[16px] leading-relaxed text-ss-body">
-              No two days are identical — the ocean decides — but a typical day at Soul Surfer
-              looks something like this.
-            </p>
-          </div>
-          <ol className="relative flex flex-col gap-8 border-l-2 border-ss-sage/40 pl-8">
-            {DAY.map((slot) => (
-              <li key={slot.time} className="relative">
-                <span
-                  aria-hidden="true"
-                  className="absolute -left-[41px] top-1 h-4 w-4 rounded-full border-2 border-ss-sage bg-ss-cream"
-                />
-                <p className="font-onest text-[11px] font-semibold uppercase tracking-[1.5px] text-ss-sage">
-                  {slot.time}
-                </p>
-                <h3 className="mt-1 font-onest text-lg font-semibold text-ss-espresso">
-                  {slot.label}
-                </h3>
-                <p className="mt-1 font-onest text-[15px] leading-relaxed text-ss-body">
-                  {slot.text}
-                </p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      {/* Everything's included — link out to packages / rates */}
-      <section className="bg-ss-cream">
-        <div className="mx-auto max-w-3xl px-6 py-24 text-center">
-          <h2 className="font-onest text-3xl font-semibold text-ss-espresso sm:text-[34px]">
-            Every activity is included
-          </h2>
-          <p className="mt-5 font-onest text-[17px] leading-relaxed text-ss-body">
-            Guided surf, theory, video analysis, rooftop yoga and the full social calendar come
-            with every stay — no hidden extras. The only difference between packages is how much
-            surf and coaching you want each week.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <a
-              href="/rooms"
-              className="inline-flex items-center rounded-full bg-ss-espresso px-7 py-3.5 font-onest text-sm font-semibold !text-white no-underline transition-transform hover:-translate-y-0.5 hover:!text-white"
-            >
-              View packages
-            </a>
-            <a
-              href="/rates"
-              className="inline-flex items-center rounded-full border border-ss-espresso/25 px-7 py-3.5 font-onest text-sm font-semibold text-ss-espresso no-underline transition-colors hover:bg-ss-espresso/5"
-            >
-              See rates
-            </a>
-          </div>
-        </div>
-      </section>
-
       <BookingCTA
+        variant="light"
         title="Come live the camp life"
         text="Surf, yoga, sunset dinners and a crew from all over the world. Pick your week and we'll handle the rest."
         ctaLabel="View packages"
