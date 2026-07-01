@@ -1,7 +1,7 @@
-// Conversion CTA band — the primary "next step" at the foot of every sub-page.
-// Default is the espresso band with a cream pill button. Pass variant="light" for
-// a taupe band with dark text + an espresso button (matches the light content
-// sections), used where a dark band would clash. Built with Tailwind.
+// Conversion CTA banner — the primary "next step" at the foot of every sub-page.
+// A full-bleed photo with an espresso gradient overlay, refined type, and two
+// polished buttons (cream primary with a sliding arrow + a glass secondary).
+// `variant` is accepted for backward-compatibility but the banner is always used.
 export default function BookingCTA({
   title = "Ready for your surf week?",
   text = "Our team helps you pick the right package and room and get booked with confidence — minutes from the bay and the surf.",
@@ -9,7 +9,6 @@ export default function BookingCTA({
   ctaHref = "/rates",
   secondaryLabel,
   secondaryHref,
-  variant = "dark",
 }: {
   title?: string;
   text?: string;
@@ -19,46 +18,47 @@ export default function BookingCTA({
   secondaryHref?: string;
   variant?: "dark" | "light";
 }) {
-  const light = variant === "light";
   return (
-    <section className={light ? "bg-ss-taupe" : "bg-ss-espresso"}>
-      <div className="mx-auto max-w-4xl px-6 py-20 text-center">
-        <p className="m-0 mb-4 font-onest text-xs font-semibold uppercase tracking-[2px] text-ss-sage">
+    <section className="relative overflow-hidden bg-ss-espresso">
+      {/* Full-bleed background photo + gradient overlay for a premium banner feel */}
+      <div aria-hidden="true" className="absolute inset-0">
+        <img
+          src="/assets/activities/act-beach.jpg"
+          alt=""
+          loading="lazy"
+          className="h-full w-full scale-105 object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-ss-espresso/92 via-ss-espresso/86 to-ss-cocoa/94" />
+      </div>
+
+      <div className="relative mx-auto max-w-3xl px-6 py-24 text-center sm:py-28">
+        <p className="m-0 mb-4 font-onest text-xs font-semibold uppercase tracking-[3px] text-ss-sage">
           Plan your stay
         </p>
-        <h2
-          className={`m-0 font-onest text-[clamp(26px,3.6vw,40px)] font-semibold leading-tight ${
-            light ? "text-ss-espresso" : "text-white"
-          }`}
-        >
+        <h2 className="m-0 font-onest text-[clamp(30px,4.4vw,48px)] font-semibold leading-[1.08] text-white">
           {title}
         </h2>
-        <p
-          className={`mx-auto mt-5 max-w-2xl font-onest text-[15px] leading-relaxed ${
-            light ? "text-ss-body" : "text-white/70"
-          }`}
-        >
+        <p className="mx-auto mt-5 max-w-xl font-onest text-[16px] leading-relaxed text-white/75">
           {text}
         </p>
-        <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
+
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <a
             href={ctaHref}
-            className={`inline-block rounded-full px-9 py-3.5 font-onest text-sm font-semibold uppercase tracking-wide no-underline transition-colors ${
-              light
-                ? "bg-ss-espresso !text-white hover:bg-[#1f1c17]"
-                : "bg-ss-cream text-ss-espresso hover:bg-white"
-            }`}
+            className="group inline-flex items-center gap-2 rounded-full bg-ss-cream px-8 py-4 font-onest text-sm font-semibold uppercase tracking-wide text-ss-espresso no-underline shadow-lg shadow-black/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-white"
           >
             {ctaLabel}
+            <span
+              aria-hidden="true"
+              className="transition-transform duration-300 group-hover:translate-x-1"
+            >
+              →
+            </span>
           </a>
           {secondaryLabel && secondaryHref ? (
             <a
               href={secondaryHref}
-              className={`inline-block rounded-full border px-9 py-3.5 font-onest text-sm font-semibold uppercase tracking-wide no-underline transition-colors ${
-                light
-                  ? "border-ss-espresso/25 text-ss-espresso hover:bg-ss-espresso/5"
-                  : "border-white/30 text-white hover:border-white/70"
-              }`}
+              className="inline-flex items-center rounded-full border border-white/40 px-8 py-4 font-onest text-sm font-semibold uppercase tracking-wide text-white no-underline backdrop-blur-sm transition-colors duration-300 hover:border-white hover:bg-white/10"
             >
               {secondaryLabel}
             </a>

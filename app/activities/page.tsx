@@ -256,7 +256,6 @@ export default function ActivitiesPage() {
       </section>
 
       <BookingCTA
-        variant="light"
         title="Come live the camp life"
         text="Surf, yoga, sunset dinners and a crew from all over the world. Pick your week and we'll handle the rest."
         ctaLabel="View packages"

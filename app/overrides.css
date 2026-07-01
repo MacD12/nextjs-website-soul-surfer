@@ -334,6 +334,33 @@ body.ss-mnav-active {
   transform: scale(1.35);
 }
 
+/* Footer brand block: the "about" paragraph shipped locked to a cramped 500px,
+   sitting vertically-centred beside the logo with a wide 50px gap — so it read as
+   a narrow, floating 4-line column. Align the logo to the TOP of the text, widen
+   the paragraph to a cleaner measure, and tighten the gap so it reads as one tidy
+   unit. (Mobile still stacks via Elementor's flex-wrap.) */
+.elementor-element-fd39073 {
+  --align-items: flex-start !important;
+  align-items: flex-start !important;
+  --gap: 34px 34px !important;
+  gap: 34px !important;
+}
+/* Slim the footer's side margins: both the brand row and the nav-columns row
+   shipped with 100px left/right padding. Reduce both together (so they stay
+   aligned) to give the content more width. */
+.elementor-element-2948b41,
+.elementor-element-24ca75d {
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+}
+.footer-text {
+  max-width: 820px !important;
+  width: auto !important;
+}
+.footer-text p {
+  line-height: 1.7;
+}
+
 /* Section sub-headers: a supporting line that sits directly under a section
    title (e.g. the Featured Surf Packages / Featured Rooms carousels). Muted body
    colour, left-aligned under the H2, with comfortable measure. */
