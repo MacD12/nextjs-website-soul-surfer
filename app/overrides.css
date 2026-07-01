@@ -334,6 +334,18 @@ body.ss-mnav-active {
   transform: scale(1.35);
 }
 
+/* On-brand text selection — the browser default (harsh blue) clashed with the
+   palette and read like a rendering glitch on the dark CTA banner. Sage highlight
+   with white text, legible on both light and dark sections. */
+::selection {
+  background-color: var(--ss-sage);
+  color: #ffffff;
+}
+::-moz-selection {
+  background-color: var(--ss-sage);
+  color: #ffffff;
+}
+
 /* Footer brand block: the "about" paragraph shipped locked to a cramped 500px,
    sitting vertically-centred beside the logo with a wide 50px gap — so it read as
    a narrow, floating 4-line column. Align the logo to the TOP of the text, widen

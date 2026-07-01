@@ -31,8 +31,8 @@ export default function BookingCTA({
         {/* Reliable overlay: the `opacity` utility on a solid fill (not a color/
             opacity modifier, which doesn't generate for the custom ss- colors) +
             a black gradient for depth. Keeps the photo readable behind white text. */}
-        <div className="absolute inset-0 bg-ss-espresso opacity-[0.82]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-black/25" />
+        <div className="absolute inset-0 bg-ss-espresso opacity-[0.86]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/30" />
       </div>
 
       <div className="relative mx-auto max-w-3xl px-6 py-24 text-center sm:py-28">
