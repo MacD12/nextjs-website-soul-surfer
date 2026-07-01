@@ -243,40 +243,53 @@ body.ss-mnav-active {
   object-fit: cover;
   display: block;
 }
-/* The gallery buttons are plain <button>s; the kit's button styling otherwise
-   gives them a red outline + pill background. !important resets keep the arrows as
-   clean round buttons and the dots as small circles. */
+/* Glassmorphism gallery controls — a frosted-glass "unique touch". The kit's
+   button styling would otherwise add a red outline + pill background, so every
+   visual property is forced with !important. Arrows: blurred translucent glass
+   circles with an inner highlight; dots: tiny glass pills that glow when active. */
 .ss-gal-nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 36px !important;
-  height: 36px !important;
+  width: 40px !important;
+  height: 40px !important;
   min-width: 0 !important;
   display: flex !important;
   align-items: center;
   justify-content: center;
   padding: 0 !important;
-  border: 0 !important;
+  border: 1px solid rgba(255, 255, 255, 0.45) !important;
   border-radius: 50% !important;
-  background: rgba(255, 255, 255, 0.85) !important;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2) !important;
-  color: #2b2722 !important;
-  font-size: 20px !important;
+  background: rgba(255, 255, 255, 0.14) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  backdrop-filter: blur(12px) saturate(160%);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55) !important;
+  color: #ffffff !important;
+  font-size: 19px !important;
   font-weight: 700;
   line-height: 1;
   cursor: pointer;
-  opacity: 0.85;
+  opacity: 0.92;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
   -webkit-appearance: none;
   appearance: none;
-  transition: opacity 0.2s ease, background 0.2s ease;
+  transition: background 0.25s ease, transform 0.25s ease,
+    box-shadow 0.25s ease, border-color 0.25s ease, opacity 0.25s ease;
   z-index: 4;
 }
 .ss-gal:hover .ss-gal-nav {
   opacity: 1;
 }
 .ss-gal-nav:hover {
-  background: #fff !important;
+  background: rgba(255, 255, 255, 0.28) !important;
+  border-color: rgba(255, 255, 255, 0.75) !important;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7) !important;
+}
+.ss-gal-nav:active {
+  transform: translateY(-50%) scale(0.96);
 }
 .ss-gal-prev {
   left: 12px;
@@ -286,29 +299,39 @@ body.ss-mnav-active {
 }
 .ss-gal-dots {
   position: absolute;
-  bottom: 12px;
-  right: 12px;
+  bottom: 13px;
+  right: 13px;
   display: flex;
+  align-items: center;
   gap: 7px;
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: rgba(20, 18, 15, 0.18);
+  -webkit-backdrop-filter: blur(8px) saturate(140%);
+  backdrop-filter: blur(8px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   z-index: 4;
 }
 .ss-gal-dot {
-  width: 9px !important;
-  height: 9px !important;
+  width: 8px !important;
+  height: 8px !important;
   min-width: 0 !important;
   padding: 0 !important;
-  border: 0 !important;
+  border: 1px solid rgba(255, 255, 255, 0.55) !important;
   border-radius: 50% !important;
-  background: rgba(255, 255, 255, 0.6) !important;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.45) !important;
+  background: rgba(255, 255, 255, 0.35) !important;
+  box-shadow: none !important;
   cursor: pointer;
   -webkit-appearance: none;
   appearance: none;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition: background 0.25s ease, transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 .ss-gal-dot.is-active {
-  background: #fff !important;
-  transform: scale(1.3);
+  background: #ffffff !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.85) !important;
+  transform: scale(1.35);
 }
 
 /* Section sub-headers: a supporting line that sits directly under a section
@@ -338,6 +361,133 @@ body.ss-mnav-active {
 }
 .elementor-element-3531dfa > .e-con-inner .ss-hero-credit-widget {
   order: 2;
+}
+
+/* ===== Activities section (custom, built to match the site's card language) =====
+   Left-aligned title + sub-header with a "View all" pill on the right (like the
+   carousels), then a responsive grid of white rounded cards with a photo, a title
+   and an "Explore" link. Uses the palette tokens + Onest, taupe band so it slots
+   into the cream/taupe rhythm. */
+.ss-section.ss-activities {
+  background-color: var(--ss-taupe) !important;
+}
+.ss-act-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px 28px;
+  flex-wrap: wrap;
+  margin-bottom: 34px;
+}
+.ss-act-intro {
+  max-width: 660px;
+}
+.ss-act-h2 {
+  font-family: "Onest", sans-serif;
+  font-weight: 600;
+  font-size: clamp(26px, 3.6vw, 38px);
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  color: var(--ss-espresso);
+  margin: 0;
+}
+.ss-act-viewall {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  padding: 13px 26px;
+  border-radius: 999px;
+  background: var(--ss-espresso);
+  color: #fff;
+  font-family: "Onest", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+.ss-act-viewall:hover {
+  background: #1f1c17;
+  transform: translateY(-2px);
+}
+.ss-act-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.ss-act-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--ss-white);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.ss-act-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.13);
+}
+.ss-act-media {
+  height: 190px;
+  overflow: hidden;
+}
+.ss-act-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.ss-act-card:hover .ss-act-media img {
+  transform: scale(1.06);
+}
+.ss-act-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px 20px 22px;
+  flex: 1;
+}
+.ss-act-title {
+  font-family: "Onest", sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--ss-espresso);
+  margin: 0;
+}
+.ss-act-link {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "Onest", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--ss-sage);
+  text-decoration: none;
+  transition: gap 0.25s ease, color 0.25s ease;
+}
+.ss-act-link span {
+  transition: transform 0.25s ease;
+}
+.ss-act-link:hover {
+  color: var(--ss-espresso);
+}
+.ss-act-link:hover span {
+  transform: translateX(4px);
+}
+@media (max-width: 1024px) {
+  .ss-act-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 560px) {
+  .ss-act-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* FAQ section background → taupe (#D7D2C4) per request. Scoped to .ss-faq, which

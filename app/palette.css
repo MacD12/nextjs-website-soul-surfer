@@ -79,6 +79,23 @@ body.elementor-kit-6 {
   background-color: var(--ss-cream) !important;
 }
 
+/* Section colour RHYTHM fix. "What's included" (580d2e2 / inner 96749d3) and the
+   "Weligama corner" location band (1092f34) shipped on the default taupe, so they
+   collided with the taupe sections beside them (Rooms→What's-included were both
+   taupe; Why-surf→Location→FAQ were three taupe in a row). Setting these two to
+   cream restores a clean alternation down the page:
+     About(cream) → Rooms+Packages(taupe) → What's-included(cream) →
+     More/Rooftop/Built(cream, separated by the island image) → Why-surf(taupe) →
+     Location(cream) → FAQ(taupe). */
+.elementor-element-580d2e2,
+.elementor-element-580d2e2 .elementor-motion-effects-layer,
+.elementor-element-96749d3,
+.elementor-element-96749d3 .elementor-motion-effects-layer,
+.elementor-element-1092f34,
+.elementor-element-1092f34 .elementor-motion-effects-layer {
+  background-color: var(--ss-cream) !important;
+}
+
 /* "Why surf with Soul Surfer?" section (the four icon boxes) — taupe #D7D2C4
    per request, so it reads as a distinct band between the cream sections. */
 .elementor-element-72257620,
