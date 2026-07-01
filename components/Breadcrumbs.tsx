@@ -28,7 +28,7 @@ export default function Breadcrumbs({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
-      <ol className="mx-auto flex max-w-6xl items-center gap-2.5 px-6 py-3.5 font-onest text-[11px] font-semibold uppercase tracking-[1.5px] text-ss-body">
+      <ol className="mx-auto flex max-w-[1400px] items-center gap-2.5 px-6 py-3.5 font-onest text-[11px] font-semibold uppercase tracking-[1.5px] text-ss-body">
         {items.map((item, i) => (
           <li key={`${item.label}-${i}`} className="flex items-center gap-2.5">
             {item.href ? (

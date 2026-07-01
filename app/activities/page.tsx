@@ -91,7 +91,7 @@ export default function ActivitiesPage() {
 
       {/* Intro — expands on the idea instead of repeating the home paragraph */}
       <section className="bg-ss-cream">
-        <div className="mx-auto max-w-3xl px-6 py-20 text-center">
+        <div className="mx-auto max-w-3xl px-6 py-24 text-center">
           <p className="font-onest text-[11px] font-semibold uppercase tracking-[2px] text-ss-sage">
             Beyond the line-up
           </p>
@@ -109,7 +109,7 @@ export default function ActivitiesPage() {
 
       {/* Categorized activities — alternating image + copy rows */}
       <section className="bg-ss-taupe">
-        <div className="mx-auto max-w-6xl px-6 py-20">
+        <div className="mx-auto max-w-[1400px] px-6 py-24">
           <div className="mb-14 max-w-2xl">
             <h2 className="font-onest text-3xl font-semibold leading-tight text-ss-espresso sm:text-[36px]">
               What fills your week
@@ -173,7 +173,7 @@ export default function ActivitiesPage() {
 
       {/* A day in the life — the unique, uncopyable content */}
       <section className="bg-ss-cream">
-        <div className="mx-auto max-w-4xl px-6 py-20">
+        <div className="mx-auto max-w-4xl px-6 py-24">
           <div className="mb-12 text-center">
             <p className="font-onest text-[11px] font-semibold uppercase tracking-[2px] text-ss-sage">
               Our rhythm
@@ -210,7 +210,7 @@ export default function ActivitiesPage() {
 
       {/* Activity-tied guest voices */}
       <section className="bg-ss-taupe">
-        <div className="mx-auto max-w-6xl px-6 py-20">
+        <div className="mx-auto max-w-[1400px] px-6 py-24">
           <h2 className="mb-12 text-center font-onest text-3xl font-semibold text-ss-espresso sm:text-[36px]">
             In their words
           </h2>
@@ -237,7 +237,7 @@ export default function ActivitiesPage() {
 
       {/* Everything's included — link out to packages / rates */}
       <section className="bg-ss-cream">
-        <div className="mx-auto max-w-3xl px-6 py-20 text-center">
+        <div className="mx-auto max-w-3xl px-6 py-24 text-center">
           <h2 className="font-onest text-3xl font-semibold text-ss-espresso sm:text-[34px]">
             Every activity is included
           </h2>
