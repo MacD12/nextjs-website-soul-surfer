@@ -28,17 +28,21 @@ export default function BookingCTA({
           loading="lazy"
           className="h-full w-full scale-105 object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-ss-espresso/92 via-ss-espresso/86 to-ss-cocoa/94" />
+        {/* Reliable overlay: the `opacity` utility on a solid fill (not a color/
+            opacity modifier, which doesn't generate for the custom ss- colors) +
+            a black gradient for depth. Keeps the photo readable behind white text. */}
+        <div className="absolute inset-0 bg-ss-espresso opacity-[0.82]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-black/25" />
       </div>
 
       <div className="relative mx-auto max-w-3xl px-6 py-24 text-center sm:py-28">
         <p className="m-0 mb-4 font-onest text-xs font-semibold uppercase tracking-[3px] text-ss-sage">
           Plan your stay
         </p>
-        <h2 className="m-0 font-onest text-[clamp(30px,4.4vw,48px)] font-semibold leading-[1.08] text-white">
+        <h2 className="m-0 font-onest text-[clamp(30px,4.4vw,48px)] font-semibold leading-[1.08] !text-white [text-shadow:0_2px_18px_rgba(0,0,0,0.35)]">
           {title}
         </h2>
-        <p className="mx-auto mt-5 max-w-xl font-onest text-[16px] leading-relaxed text-white/75">
+        <p className="mx-auto mt-5 max-w-xl font-onest text-[16px] leading-relaxed text-white/85 [text-shadow:0_1px_10px_rgba(0,0,0,0.3)]">
           {text}
         </p>
 
