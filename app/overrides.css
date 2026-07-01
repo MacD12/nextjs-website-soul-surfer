@@ -363,6 +363,12 @@ body.ss-mnav-active {
   order: 2;
 }
 
+/* Removed per request: the "Meet the team" button in the home page's 2nd (About)
+   section — leaving just the "About the camp" button. */
+.elementor-element-5f522f8 {
+  display: none !important;
+}
+
 /* ===== Activities section (custom, built to match the site's card language) =====
    Left-aligned title + sub-header with a "View all" pill on the right (like the
    carousels), then a responsive grid of white rounded cards with a photo, a title
@@ -370,14 +376,21 @@ body.ss-mnav-active {
    into the cream/taupe rhythm. */
 .ss-section.ss-activities {
   background-color: var(--ss-taupe) !important;
+  padding-top: 90px;
+  padding-bottom: 90px;
+}
+/* Match the width of the site's boxed Elementor sections (--container-max-width
+   1400px) so the left/right edges line up with Rooms/Packages above. */
+.ss-section.ss-activities .ss-inner {
+  max-width: 1400px;
 }
 .ss-act-head {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
-  gap: 20px 28px;
+  gap: 18px 32px;
   flex-wrap: wrap;
-  margin-bottom: 34px;
+  margin-bottom: 40px;
 }
 .ss-act-intro {
   max-width: 660px;
@@ -397,16 +410,20 @@ body.ss-mnav-active {
   align-items: center;
   padding: 13px 26px;
   border-radius: 999px;
-  background: var(--ss-espresso);
-  color: #fff;
+  background: var(--ss-espresso) !important;
+  /* !important: a global link colour was overriding this, leaving the label
+     dark-on-dark (invisible). */
+  color: #ffffff !important;
   font-family: "Onest", sans-serif;
   font-size: 14px;
   font-weight: 600;
-  text-decoration: none;
+  text-decoration: none !important;
+  white-space: nowrap;
   transition: background 0.25s ease, transform 0.25s ease;
 }
 .ss-act-viewall:hover {
-  background: #1f1c17;
+  background: #1f1c17 !important;
+  color: #ffffff !important;
   transform: translateY(-2px);
 }
 .ss-act-grid {
