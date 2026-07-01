@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 const CATEGORIES = [
   {
     key: "surf",
+    anchor: "surf-theory",
     kicker: "The core",
     title: "Surf & theory",
     img: "/assets/activities/act-surf.jpg",
@@ -29,6 +30,7 @@ const CATEGORIES = [
   },
   {
     key: "wellness",
+    anchor: "yoga-wellness",
     kicker: "Recover & reset",
     title: "Yoga & wellness",
     img: "/assets/activities/act-yoga.jpg",
@@ -44,10 +46,13 @@ const CATEGORIES = [
   },
   {
     key: "social",
+    anchor: "social",
     kicker: "The stories",
     title: "Social — boat parties & beach days",
-    img: "/assets/activities/act-boat.jpg",
-    alt: "Guests on a boat trip — social activities at Soul Surfer Camp, Weligama",
+    // Was act-boat (a scuba diver) — swapped to the golden-hour beach (act-beach),
+    // which fits "beach days". No boat-party photo exists in assets.
+    img: "/assets/activities/act-beach.jpg",
+    alt: "Golden-hour beach and sunset — beach days at Soul Surfer, Weligama",
     lead: "This is the part nobody warns you about: you arrive for the waves and leave with a crew from ten different countries. Camp life runs on shared dinners, salty afternoons and one very good boat party.",
     items: [
       "Boat parties on the water — the week's highlight for most",
@@ -68,24 +73,35 @@ const HIGHLIGHTS = [
     alt: "Surfer riding a wave on a surf holiday in Weligama, Sri Lanka",
     title: "Have An Unforgettable Surf Holiday",
     why: "It starts with the surf. Coached sessions at the right peaks, video analysis and theory mean you fly home a genuinely better surfer — the trip you'll measure every other holiday against.",
+    href: "#surf-theory",
   },
   {
+    // Yoga & wellness card — copy drawn only from the "Yoga & wellness" category
+    // section below (its lead + bullet list); no new claims introduced.
+    img: "/assets/activities/act-yoga.jpg",
+    alt: "Sunrise yoga on the rooftop at Soul Surfer Camp, Sri Lanka",
+    title: "Reset On The Rooftop",
+    why: "Surfing takes it out of you — the rooftop is where you put it back. Sunrise and sunset yoga above the south coast, an infinity pool to float in between sessions, and quiet corners to rest. Come down loose, paddle out stronger.",
+    href: "#yoga-wellness",
+  },
+  {
+    // Merged Social card (was "Meet New People" + "Make New Friends"). Uses the
+    // crew-by-the-sea photo (act-people); the old act-friends photo was people
+    // indoors with laptops — wrong for a surf camp.
     img: "/assets/activities/act-people.jpg",
-    alt: "Travellers from around the world meeting at Soul Surfer camp",
-    title: "Meet New People From All Around The World",
-    why: "Every week a fresh crew lands from a dozen countries. Shared sessions and dinners mean you're never a stranger for long — the whole camp is built to bring people together.",
+    alt: "A crew of travellers from around the world together by the sea at Soul Surfer",
+    title: "A Crew From Every Corner Of The World",
+    why: "A fresh crew lands every week from a dozen countries. The people you paddle out with at dawn and toast at sunset are the ones you plan your next trip around.",
+    href: "#social",
   },
   {
-    img: "/assets/activities/act-friends.jpg",
-    alt: "New friends enjoying camp life at Soul Surfer, Weligama",
-    title: "Make New Friends For Life",
-    why: "The friendships are the part that lasts. The people you paddle out with at dawn and toast at sunset become the ones you plan your next trip around.",
-  },
-  {
-    img: "/assets/activities/act-boat.jpg",
-    alt: "Boat party on the water — Soul Surfer surf camp activities",
+    // Dummy boat-on-open-water photo (act-boatparty) — a stand-in for a real
+    // boat-party shot; swap it out when the camp's own photo is available.
+    img: "/assets/activities/act-boatparty.jpg",
+    alt: "A boat out on the open water off Weligama — Soul Surfer's boat party",
     title: "Boat Party",
     why: "The week's headline event. Music, open water and the whole camp together — the boat party is the story everyone tells the moment they get home.",
+    href: "#social",
   },
 ];
 
@@ -159,7 +175,7 @@ export default function ActivitiesPage() {
                     {h.why}
                   </p>
                   <a
-                    href="/rooms"
+                    href={h.href}
                     className="mt-6 inline-flex items-center gap-1.5 font-onest text-[11px] font-semibold uppercase tracking-[1.5px] text-ss-sage no-underline transition-colors hover:text-ss-espresso"
                   >
                     Explore
@@ -191,7 +207,8 @@ export default function ActivitiesPage() {
             {CATEGORIES.map((cat, i) => (
               <div
                 key={cat.key}
-                className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-14"
+                id={cat.anchor}
+                className="scroll-mt-28 grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-14"
               >
                 <div
                   className={`overflow-hidden rounded-[18px] shadow-sm ${
