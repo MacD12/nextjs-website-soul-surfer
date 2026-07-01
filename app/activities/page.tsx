@@ -70,13 +70,6 @@ const DAY = [
   { time: "Night", label: "Camp social", text: "Some nights it's a boat party, some nights just good conversation and a cold drink. Every night, new friends." },
 ];
 
-// Activity-specific guest voices (tied to real activities, not a generic quote).
-const QUOTES = [
-  { text: "The video-analysis sessions changed how I read a wave. I caught more in one week than a whole season back home.", name: "Lena", place: "Germany", tag: "Surf & theory" },
-  { text: "The boat party is unreal. I came for the surf and left with fifteen new friends and a group chat that never sleeps.", name: "Marco", place: "Italy", tag: "Social" },
-  { text: "Sunrise yoga on the rooftop, then straight into the water — I've never felt so reset in my life.", name: "Sophie", place: "France", tag: "Yoga & wellness" },
-];
-
 export default function ActivitiesPage() {
   return (
     <>
@@ -208,33 +201,6 @@ export default function ActivitiesPage() {
         </div>
       </section>
 
-      {/* Activity-tied guest voices */}
-      <section className="bg-ss-taupe">
-        <div className="mx-auto max-w-[1400px] px-6 py-24">
-          <h2 className="mb-12 text-center font-onest text-3xl font-semibold text-ss-espresso sm:text-[36px]">
-            In their words
-          </h2>
-          <div className="grid grid-cols-1 gap-7 md:grid-cols-3">
-            {QUOTES.map((q) => (
-              <figure
-                key={q.name}
-                className="flex flex-col rounded-[15px] bg-ss-white p-7 shadow-sm"
-              >
-                <span className="font-onest text-[11px] font-semibold uppercase tracking-[1.5px] text-ss-sage">
-                  {q.tag}
-                </span>
-                <blockquote className="mt-4 flex-1 font-onest text-[16px] leading-relaxed text-ss-espresso">
-                  &ldquo;{q.text}&rdquo;
-                </blockquote>
-                <figcaption className="mt-6 font-onest text-sm font-semibold text-ss-body">
-                  {q.name} · <span className="font-normal">{q.place}</span>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Everything's included — link out to packages / rates */}
       <section className="bg-ss-cream">
         <div className="mx-auto max-w-3xl px-6 py-24 text-center">
@@ -249,7 +215,7 @@ export default function ActivitiesPage() {
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <a
               href="/rooms"
-              className="inline-flex items-center rounded-full bg-ss-espresso px-7 py-3.5 font-onest text-sm font-semibold text-white no-underline transition-transform hover:-translate-y-0.5"
+              className="inline-flex items-center rounded-full bg-ss-espresso px-7 py-3.5 font-onest text-sm font-semibold !text-white no-underline transition-transform hover:-translate-y-0.5 hover:!text-white"
             >
               View packages
             </a>
