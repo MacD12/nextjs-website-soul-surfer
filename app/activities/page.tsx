@@ -211,7 +211,7 @@ export default function ActivitiesPage() {
                 className="scroll-mt-28 grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-14"
               >
                 <div
-                  className={`overflow-hidden rounded-[18px] shadow-sm ${
+                  className={`overflow-hidden rounded-[15px] shadow-sm ${
                     i % 2 === 1 ? "lg:order-2" : ""
                   }`}
                 >
