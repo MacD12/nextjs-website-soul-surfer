@@ -70,6 +70,36 @@ const DAY = [
   { time: "Night", label: "Camp social", text: "Some nights it's a boat party, some nights just good conversation and a cold drink. Every night, new friends." },
 ];
 
+// The four signature experiences — the reasons guests remember Soul Surfer. Each
+// carries a short "why it matters" line so it reads as a headline activity, not
+// just a photo.
+const HIGHLIGHTS = [
+  {
+    img: "/assets/activities/act-surf.jpg",
+    alt: "Surfer riding a wave on a surf holiday in Weligama, Sri Lanka",
+    title: "Have An Unforgettable Surf Holiday",
+    why: "It starts with the surf. Coached sessions at the right peaks, video analysis and theory mean you fly home a genuinely better surfer — the trip you'll measure every other holiday against.",
+  },
+  {
+    img: "/assets/activities/act-people.jpg",
+    alt: "Travellers from around the world meeting at Soul Surfer camp",
+    title: "Meet New People From All Around The World",
+    why: "Every week a fresh crew lands from a dozen countries. Shared sessions and dinners mean you're never a stranger for long — the whole camp is built to bring people together.",
+  },
+  {
+    img: "/assets/activities/act-friends.jpg",
+    alt: "New friends enjoying camp life at Soul Surfer, Weligama",
+    title: "Make New Friends For Life",
+    why: "The friendships are the part that lasts. The people you paddle out with at dawn and toast at sunset become the ones you plan your next trip around.",
+  },
+  {
+    img: "/assets/activities/act-boat.jpg",
+    alt: "Boat party on the water — Soul Surfer surf camp activities",
+    title: "Boat Party",
+    why: "The week's headline event. Music, open water and the whole camp together — the boat party is the story everyone tells the moment they get home.",
+  },
+];
+
 export default function ActivitiesPage() {
   return (
     <>
@@ -100,8 +130,63 @@ export default function ActivitiesPage() {
         </div>
       </section>
 
-      {/* Categorized activities — alternating image + copy rows */}
+      {/* Signature experiences — the four headline activities, with the "why" */}
       <section className="bg-ss-taupe">
+        <div className="mx-auto max-w-[1400px] px-6 py-24">
+          <div className="mb-14 max-w-2xl">
+            <p className="font-onest text-[11px] font-semibold uppercase tracking-[2px] text-ss-sage">
+              The heart of camp life
+            </p>
+            <h2 className="mt-3 font-onest text-3xl font-semibold leading-tight text-ss-espresso sm:text-[36px]">
+              The experiences guests fly home talking about
+            </h2>
+            <p className="mt-3 font-onest text-[16px] leading-relaxed text-ss-body">
+              These four are why Soul Surfer isn't just a place to sleep between surfs. They're
+              the moments that turn a week in Weligama into the trip you'll always compare the
+              rest to.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-4">
+            {HIGHLIGHTS.map((h) => (
+              <article
+                key={h.title}
+                className="group flex flex-col overflow-hidden rounded-[15px] bg-ss-white shadow-sm transition-shadow duration-300 hover:shadow-lg"
+              >
+                <div className="overflow-hidden">
+                  <img
+                    src={h.img}
+                    alt={h.alt}
+                    loading="lazy"
+                    width={800}
+                    height={600}
+                    className="h-[210px] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="flex flex-1 flex-col p-6">
+                  <h3 className="font-onest text-lg font-semibold leading-snug text-ss-espresso">
+                    {h.title}
+                  </h3>
+                  <p className="mt-3 flex-1 font-onest text-[14px] leading-relaxed text-ss-body">
+                    {h.why}
+                  </p>
+                  <a
+                    href="/rooms"
+                    className="mt-6 inline-flex items-center gap-1.5 font-onest text-[11px] font-semibold uppercase tracking-[1.5px] text-ss-sage no-underline transition-colors hover:text-ss-espresso"
+                  >
+                    Explore
+                    <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">
+                      →
+                    </span>
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Categorized activities — alternating image + copy rows */}
+      <section className="bg-ss-cream">
         <div className="mx-auto max-w-[1400px] px-6 py-24">
           <div className="mb-14 max-w-2xl">
             <h2 className="font-onest text-3xl font-semibold leading-tight text-ss-espresso sm:text-[36px]">
@@ -165,7 +250,7 @@ export default function ActivitiesPage() {
       </section>
 
       {/* A day in the life — the unique, uncopyable content */}
-      <section className="bg-ss-cream">
+      <section className="bg-ss-taupe">
         <div className="mx-auto max-w-4xl px-6 py-24">
           <div className="mb-12 text-center">
             <p className="font-onest text-[11px] font-semibold uppercase tracking-[2px] text-ss-sage">
