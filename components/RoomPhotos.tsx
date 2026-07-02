@@ -10,8 +10,10 @@ import { useState } from "react";
 // The kit styles every <button> with a dark fill + radius + padding, so each
 // control forces its own look with `!` (important) + appearance-none — otherwise
 // the dots render as dark pills and the thumbnails get a dark frame.
+// Matches the home page room-gallery arrows (.ss-gal-nav): a frosted-glass circle
+// that stays visible and brightens on hover, so the carousel controls are obvious.
 const ARROW =
-  "absolute top-1/2 grid h-9 w-9 -translate-y-1/2 place-items-center appearance-none rounded-full !border !border-white/40 !bg-white/25 !p-0 text-lg font-bold leading-none !text-white opacity-0 shadow-md backdrop-blur-sm transition duration-300 hover:!bg-white/40 group-hover:opacity-100";
+  "absolute top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center appearance-none rounded-full !border !border-white/45 !bg-white/20 !p-0 text-lg font-bold leading-none !text-white shadow-[0_6px_18px_rgba(0,0,0,0.22)] backdrop-blur-md transition duration-300 hover:!bg-white/35";
 
 export default function RoomPhotos({
   images,

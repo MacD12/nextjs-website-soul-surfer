@@ -2,19 +2,15 @@
 
 import { useEffect } from "react";
 
-// Per-room image galleries.
+// Per-room image galleries on the home "Featured Rooms" carousel.
 //
-// Each "Featured Rooms" card normally shows a single image. This upgrades each
-// card into a small click-through gallery (prev/next arrows + dots). Images are
-// clean photos from /assets/inline (the glitchy generated PNGs are intentionally
-// avoided, which also replaces the broken Mixed Dormitory image). It runs in the
-// browser and re-applies to swiper's duplicated slides via a MutationObserver —
-// the same resilient pattern as the other client islands. The design is untouched
-// aside from swapping the single image widget for the gallery.
+// Each card's single image becomes a click-through gallery (arrows + dots). The
+// tricky part: the section is a swiper carousel that CLONES slides for looping,
+// and cloneNode copies markup but not event listeners or JS state. So instead of
+// per-element listeners we use ONE delegated listener on the document, and we
+// store each gallery's photos + current index in data attributes — which clone
+// fine. That makes the controls work on original and cloned slides alike.
 
-// Self-hosted sample room photos (downloaded into /public/assets/rooms). Each
-// room type gets three relevant images. Swap these paths for the real room photos
-// whenever they're available.
 const GALLERIES: Record<string, string[]> = {
   "mixed dormitory": [
     "/assets/rooms/dorm-1.jpg",
@@ -33,8 +29,6 @@ const GALLERIES: Record<string, string[]> = {
   ],
 };
 
-type Gal = HTMLElement & { __ssGal?: boolean };
-
 function galleryForCard(widget: Element): string[] | null {
   const card =
     widget.closest(".elementor-element-3b62ef7") ||
@@ -49,19 +43,21 @@ function galleryForCard(widget: Element): string[] | null {
 
 export default function RoomGallery() {
   useEffect(() => {
-    function build(widget: Gal): void {
-      if (widget.__ssGal) return;
+    function build(widget: Element): void {
+      // Skip if this widget already has a gallery — covers processed originals
+      // AND swiper's cloned slides (the clone carries a copied .ss-gal).
+      if (widget.querySelector(".ss-gal")) return;
       const images = galleryForCard(widget);
       if (!images || images.length === 0) return;
-      widget.__ssGal = true;
 
       const alt =
         widget.querySelector("img")?.getAttribute("alt") ||
         "Soul Surfer room in Weligama, Sri Lanka";
-      let index = 0;
 
       const gal = document.createElement("div");
       gal.className = "ss-gal";
+      gal.setAttribute("data-ss-images", images.join("|")); // state survives cloning
+      gal.setAttribute("data-ss-index", "0");
       gal.innerHTML =
         `<img class="ss-gal-img" alt="${alt}" src="${images[0]}">` +
         `<button type="button" class="ss-gal-nav ss-gal-prev" aria-label="Previous photo">&#8249;</button>` +
@@ -72,66 +68,76 @@ export default function RoomGallery() {
             (_, i) =>
               `<button type="button" class="ss-gal-dot${
                 i === 0 ? " is-active" : ""
-              }" aria-label="Photo ${i + 1} of ${images.length}"></button>`
+              }" data-ss-dot="${i}" aria-label="Photo ${i + 1} of ${images.length}"></button>`
           )
           .join("") +
         `</div>`;
 
-      // Preload the other photos so switching is instant.
       images.forEach((src) => {
         const im = new window.Image();
         im.src = src;
       });
 
-      const imgEl = gal.querySelector(".ss-gal-img") as HTMLImageElement;
-      const dots = Array.from(gal.querySelectorAll(".ss-gal-dot"));
-      function show(n: number): void {
-        index = (n + images!.length) % images!.length;
-        imgEl.src = images![index];
-        dots.forEach((d, i) => d.classList.toggle("is-active", i === index));
-      }
-
-      // Click handling. stopPropagation keeps the outer rooms carousel still.
-      gal.addEventListener("click", (event) => {
-        const target = event.target as Element;
-        if (target.closest(".ss-gal-next")) {
-          event.stopPropagation();
-          event.preventDefault();
-          show(index + 1);
-        } else if (target.closest(".ss-gal-prev")) {
-          event.stopPropagation();
-          event.preventDefault();
-          show(index - 1);
-        } else if (target.closest(".ss-gal-dot")) {
-          event.stopPropagation();
-          event.preventDefault();
-          show(dots.indexOf(target.closest(".ss-gal-dot") as Element));
-        }
-      });
-
-      const original = widget.querySelector("picture") || widget.querySelector("img");
+      const original =
+        widget.querySelector("picture") || widget.querySelector("img");
       if (original) original.replaceWith(gal);
       else widget.appendChild(gal);
     }
 
     function mountAll(): void {
       document
-        .querySelectorAll<Gal>(
-          ".elementor-element-2e3cd55 .elementor-element-e77e946"
-        )
+        .querySelectorAll(".elementor-element-2e3cd55 .elementor-element-e77e946")
         .forEach(build);
     }
 
     mountAll();
 
-    // Swiper clones slides for looping; re-apply to any late-added clones.
+    // ONE delegated handler (capture phase, so it runs before swiper's own
+    // pointer handling). Reads/writes state from the clicked gallery's data attrs.
+    function onClick(event: Event): void {
+      const target = event.target as Element;
+      const btn = target.closest<HTMLElement>(
+        ".ss-gal-next, .ss-gal-prev, .ss-gal-dot"
+      );
+      if (!btn) return;
+      const gal = btn.closest<HTMLElement>(".ss-gal");
+      if (!gal) return;
+      event.preventDefault();
+      event.stopPropagation();
+
+      const images = (gal.getAttribute("data-ss-images") || "")
+        .split("|")
+        .filter(Boolean);
+      if (images.length === 0) return;
+      let index = parseInt(gal.getAttribute("data-ss-index") || "0", 10);
+
+      if (btn.classList.contains("ss-gal-next")) {
+        index = (index + 1) % images.length;
+      } else if (btn.classList.contains("ss-gal-prev")) {
+        index = (index - 1 + images.length) % images.length;
+      } else {
+        index = parseInt(btn.getAttribute("data-ss-dot") || "0", 10);
+      }
+
+      gal.setAttribute("data-ss-index", String(index));
+      const img = gal.querySelector<HTMLImageElement>(".ss-gal-img");
+      if (img) img.src = images[index];
+      gal
+        .querySelectorAll(".ss-gal-dot")
+        .forEach((d, i) => d.classList.toggle("is-active", i === index));
+    }
+    document.addEventListener("click", onClick, true);
+
+    // Swiper injects cloned slides after init; give each a gallery.
     const observer = new MutationObserver((mutations) => {
-      const added = mutations.some((m) => m.addedNodes.length > 0);
-      if (added) mountAll();
+      if (mutations.some((m) => m.addedNodes.length > 0)) mountAll();
     });
     observer.observe(document.body, { childList: true, subtree: true });
 
-    return () => observer.disconnect();
+    return () => {
+      document.removeEventListener("click", onClick, true);
+      observer.disconnect();
+    };
   }, []);
 
   return null;

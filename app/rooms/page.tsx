@@ -213,7 +213,7 @@ export default function RoomsPage() {
 
       <BookingCTA
         title="Found your room?"
-        text="Tell us your dates and group and our Weligama team will confirm availability and hold your spot — no deposit required."
+        text="Tell us your dates and group and our Weligama team will confirm availability and secure your spot with a 25% deposit."
         ctaLabel="Check availability"
         ctaHref="/rates"
         secondaryLabel="Room FAQ"

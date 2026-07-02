@@ -40,7 +40,6 @@ const NOT_INCLUDED = [
   "International flights",
   "Airport transfers (available as an add-on)",
   "Travel & surf insurance",
-  "Lunch, drinks and personal extras",
   "Private 1-on-1 coaching (available as an add-on)",
   "Sri Lanka visa / ETA",
 ];
@@ -53,16 +52,16 @@ const ADDONS = [
 ];
 
 const TERMS = [
-  { title: "Deposit", text: "No deposit required to reserve. Share your dates and group and we'll hold your spot on confirmation." },
+  { title: "Deposit", text: "A 25% deposit secures your booking, with the balance due before or on arrival. We'll confirm availability with you first." },
   { title: "Cancellation", text: "Plans change — we keep it flexible. Let the team know as early as you can and we'll work with you." },
-  { title: "Best time to book", text: "Weligama's south-coast season runs roughly November to April. Book 4–8 weeks ahead for the peak months, when rooms fill fast." },
+  { title: "Best time to book", text: "Weligama's south-coast season runs roughly October to April. Book 4–8 weeks ahead for the peak months, when rooms fill fast." },
 ];
 
 const PRICING_FAQ = [
   { q: "Are the prices per person?", a: "Yes — every weekly rate is per person. The mixed dormitory is priced per bed and private rooms per person, so two people sharing a double each pay the per-person rate." },
-  { q: "Do I need to pay a deposit to book?", a: "No deposit is required to hold your spot. Tell us your dates and group and our Weligama team confirms availability with you before anything is paid." },
-  { q: "What's included in the price — and what isn't?", a: "Your room, daily guided surf, theory, video analysis, yoga, breakfast, dinner (except Sunday) and the full social calendar are included. Flights, transfers, insurance, lunch and personal extras are not." },
-  { q: "When is the best time to surf in Weligama?", a: "The south-coast season runs roughly November to April, which is also the busiest — book a few weeks ahead for peak months to lock in the room you want." },
+  { q: "Do I need to pay a deposit to book?", a: "Yes — a 25% deposit secures your booking, with the balance due before or on arrival. We confirm availability with you first, then send simple payment details." },
+  { q: "What's included in the price — and what isn't?", a: "Your room, daily guided surf, theory, video analysis, yoga, breakfast, dinner (except Sunday) and the full social calendar are included. Flights, transfers, insurance and personal extras are not." },
+  { q: "When is the best time to surf in Weligama?", a: "The south-coast season runs roughly October to April, which is also the busiest — book a few weeks ahead for peak months to lock in the room you want." },
 ];
 
 const faqSchema = {
@@ -323,7 +322,7 @@ export default function RatesPage() {
 
       <BookingCTA
         title="Ready to lock in your week?"
-        text="Tell us your dates and group, and our Weligama team will confirm availability and hold your spot — no deposit required."
+        text="Tell us your dates and group, and our Weligama team will confirm availability and secure your spot with a 25% deposit."
         ctaLabel="Book now"
         ctaHref="/rooms"
         secondaryLabel="Got questions?"

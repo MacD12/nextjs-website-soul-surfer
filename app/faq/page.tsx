@@ -29,7 +29,7 @@ const GROUPS: Group[] = [
       },
       {
         q: "Do I need to pay a deposit to book?",
-        a: "No deposit is required to hold your spot. Tell us your dates and group size and our Weligama team confirms availability with you directly before anything is paid.",
+        a: "A 25% deposit secures your booking, with the balance due before or on arrival. We confirm availability with you first, then send simple payment details.",
         link: { href: "/rooms", label: "View packages" },
       },
     ],
