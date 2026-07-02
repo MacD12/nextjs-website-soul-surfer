@@ -46,7 +46,7 @@ export default function BlogPage() {
       />
       <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Blog" }]} />
 
-      <section className="bg-ss-taupe">
+      <section className="bg-ss-cream">
         <div className="mx-auto max-w-[1400px] px-6 py-20">
           <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
             {POSTS.map((post) => (

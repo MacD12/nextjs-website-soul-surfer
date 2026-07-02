@@ -10,7 +10,7 @@ const STATS: { num: string; label: string }[] = [
 export default function TrustStrip() {
   return (
     <section className="bg-ss-cream">
-      <div className="mx-auto max-w-6xl px-6 py-14">
+      <div className="mx-auto max-w-[1400px] px-6 py-20">
         <div className="grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4">
           {STATS.map((s) => (
             <div key={s.label} className="text-center">

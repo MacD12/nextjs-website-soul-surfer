@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import PageHero from "../../components/PageHero";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import BookingCTA from "../../components/BookingCTA";
+import RoomPhotos from "../../components/RoomPhotos";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/rooms" },
@@ -114,30 +115,13 @@ export default function RoomsPage() {
                 key={room.key}
                 className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-14"
               >
-                {/* Photo gallery: one large + two thumbnails */}
-                <div
-                  className={`grid grid-cols-2 gap-3 ${i % 2 === 1 ? "lg:order-2" : ""}`}
-                >
-                  <img
-                    src={`/assets/rooms/${room.images[0]}.jpg`}
-                    alt={`${room.name} at Soul Surfer Camp, Weligama — main view`}
-                    loading="lazy"
-                    width={800}
-                    height={600}
-                    className="col-span-2 h-[300px] w-full rounded-[15px] object-cover shadow-sm sm:h-[340px]"
-                  />
-                  {room.images.slice(1).map((img) => (
-                    <img
-                      key={img}
-                      src={`/assets/rooms/${img}.jpg`}
-                      alt={`${room.name} at Soul Surfer Camp, Weligama`}
-                      loading="lazy"
-                      width={400}
-                      height={300}
-                      className="h-[130px] w-full rounded-[12px] object-cover shadow-sm sm:h-[150px]"
-                    />
-                  ))}
-                </div>
+                {/* Photo gallery: one large + two thumbnails — now interactive
+                    (arrows/dots + clickable thumbnails), same frame as before. */}
+                <RoomPhotos
+                  images={room.images}
+                  name={room.name}
+                  className={i % 2 === 1 ? "lg:order-2" : ""}
+                />
 
                 {/* Details */}
                 <div className={i % 2 === 1 ? "lg:order-1" : ""}>
@@ -193,9 +177,10 @@ export default function RoomsPage() {
             Room questions
           </h2>
           <div className="rounded-[15px] bg-ss-white px-6 shadow-sm sm:px-8">
-            {ROOM_FAQ.map((item) => (
+            {ROOM_FAQ.map((item, i) => (
               <details
                 key={item.q}
+                open={i === 0}
                 className="group border-b border-black/10 last:border-b-0"
               >
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-5 py-5 font-onest text-[16px] font-semibold leading-snug text-ss-espresso [&::-webkit-details-marker]:hidden">

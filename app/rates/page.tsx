@@ -119,7 +119,7 @@ export default function RatesPage() {
       <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Rates" }]} />
 
       {/* Comparison + pricing tables */}
-      <section className="bg-ss-taupe">
+      <section className="bg-ss-cream">
         <div className="mx-auto max-w-[1200px] px-6 py-20">
           {/* Feature comparison */}
           <h2 className="mb-2 font-onest text-2xl font-semibold text-ss-espresso sm:text-[30px]">
@@ -211,7 +211,7 @@ export default function RatesPage() {
       </section>
 
       {/* Not included */}
-      <section className="bg-ss-cream">
+      <section className="bg-ss-taupe">
         <div className="mx-auto max-w-3xl px-6 py-16">
           <div className="rounded-[16px] bg-ss-white p-8 shadow-sm">
             <h2 className="font-onest text-xl font-semibold text-ss-espresso">
@@ -238,7 +238,7 @@ export default function RatesPage() {
       </section>
 
       {/* Add-ons */}
-      <section className="bg-ss-taupe">
+      <section className="bg-ss-cream">
         <div className="mx-auto max-w-[1100px] px-6 py-20">
           <div className="mb-12 text-center">
             <h2 className="font-onest text-3xl font-semibold text-ss-espresso sm:text-[36px]">
@@ -264,7 +264,7 @@ export default function RatesPage() {
       </section>
 
       {/* Booking terms */}
-      <section className="bg-ss-cream">
+      <section className="bg-ss-taupe">
         <div className="mx-auto max-w-[1100px] px-6 py-20">
           <h2 className="mb-12 text-center font-onest text-3xl font-semibold text-ss-espresso sm:text-[36px]">
             Booking terms
@@ -285,14 +285,14 @@ export default function RatesPage() {
       </section>
 
       {/* Pricing / booking FAQ */}
-      <section className="bg-ss-taupe">
+      <section className="bg-ss-cream">
         <div className="mx-auto max-w-3xl px-6 py-20">
           <h2 className="mb-8 text-center font-onest text-3xl font-semibold text-ss-espresso sm:text-[34px]">
             Pricing & booking questions
           </h2>
           <div className="rounded-[16px] bg-ss-white px-6 shadow-sm sm:px-8">
-            {PRICING_FAQ.map((item) => (
-              <details key={item.q} className="group border-b border-black/10 last:border-b-0">
+            {PRICING_FAQ.map((item, i) => (
+              <details key={item.q} open={i === 0} className="group border-b border-black/10 last:border-b-0">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-5 py-5 font-onest text-[16px] font-semibold leading-snug text-ss-espresso [&::-webkit-details-marker]:hidden">
                   {item.q}
                   <span

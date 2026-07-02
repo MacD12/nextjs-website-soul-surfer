@@ -136,15 +136,16 @@ export default function FaqPage() {
 
       <section className="bg-ss-cream">
         <div className="mx-auto max-w-3xl px-6 py-20">
-          {GROUPS.map((group) => (
+          {GROUPS.map((group, gi) => (
             <div key={group.theme} className="mb-14 last:mb-0">
               <h2 className="mb-5 font-onest text-[13px] font-semibold uppercase tracking-[2px] text-ss-sage">
                 {group.theme}
               </h2>
               <div className="rounded-[16px] bg-ss-white px-6 shadow-sm sm:px-8">
-                {group.items.map((item) => (
+                {group.items.map((item, ii) => (
                   <details
                     key={item.q}
+                    open={gi === 0 && ii === 0}
                     className="group border-b border-black/10 last:border-b-0"
                   >
                     <summary className="flex cursor-pointer list-none items-center justify-between gap-5 py-5 font-onest text-[16px] font-semibold leading-snug text-ss-espresso [&::-webkit-details-marker]:hidden">
