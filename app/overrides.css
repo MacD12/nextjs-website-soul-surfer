@@ -251,27 +251,23 @@ body.ss-mnav-active {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 40px !important;
-  height: 40px !important;
+  width: 44px !important;
+  height: 44px !important;
   min-width: 0 !important;
   display: flex !important;
   align-items: center;
   justify-content: center;
   padding: 0 !important;
-  border: 1px solid rgba(255, 255, 255, 0.45) !important;
+  border: 0 !important;
   border-radius: 50% !important;
-  background: rgba(255, 255, 255, 0.14) !important;
-  -webkit-backdrop-filter: blur(12px) saturate(160%);
-  backdrop-filter: blur(12px) saturate(160%);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22),
-    inset 0 1px 0 rgba(255, 255, 255, 0.55) !important;
-  color: #ffffff !important;
-  font-size: 19px !important;
+  background: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28) !important;
+  color: var(--ss-espresso) !important;
+  font-size: 22px !important;
   font-weight: 700;
   line-height: 1;
   cursor: pointer;
-  opacity: 0.92;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  opacity: 1;
   -webkit-appearance: none;
   appearance: none;
   transition: background 0.25s ease, transform 0.25s ease,
@@ -282,11 +278,9 @@ body.ss-mnav-active {
   opacity: 1;
 }
 .ss-gal-nav:hover {
-  background: rgba(255, 255, 255, 0.28) !important;
-  border-color: rgba(255, 255, 255, 0.75) !important;
-  transform: translateY(-50%) scale(1.1);
-  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.7) !important;
+  background: var(--ss-cream) !important;
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.32) !important;
 }
 .ss-gal-nav:active {
   transform: translateY(-50%) scale(0.96);

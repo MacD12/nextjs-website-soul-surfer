@@ -2,19 +2,11 @@
 
 import { useState } from "react";
 
-// Interactive room gallery that keeps the exact frame it replaces — one large
-// image (col-span-2) + two thumbnails — but lets you move through the photos:
-// arrows + dots on the main image, and click a thumbnail to bring it into view.
-// Layout, sizes and corners are unchanged; only the images move.
-//
-// The kit styles every <button> with a dark fill + radius + padding, so each
-// control forces its own look with `!` (important) + appearance-none — otherwise
-// the dots render as dark pills and the thumbnails get a dark frame.
-// Matches the home page room-gallery arrows (.ss-gal-nav): a frosted-glass circle
-// that stays visible and brightens on hover, so the carousel controls are obvious.
-const ARROW =
-  "absolute top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center appearance-none rounded-full !border !border-white/45 !bg-white/20 !p-0 text-lg font-bold leading-none !text-white shadow-[0_6px_18px_rgba(0,0,0,0.22)] backdrop-blur-md transition duration-300 hover:!bg-white/35";
-
+// Interactive room gallery for the /rooms page. It reuses the EXACT same CSS
+// classes as the home page room gallery (.ss-gal-nav / .ss-gal-dot / .ss-gal-dots
+// in overrides.css) so the carousel buttons look identical to the home — only the
+// behaviour is wired here with React state. Frame/placement is unchanged: one
+// large image (col-span-2) + two thumbnails.
 export default function RoomPhotos({
   images,
   name,
@@ -32,8 +24,8 @@ export default function RoomPhotos({
 
   return (
     <div className={`grid grid-cols-2 gap-3 ${className}`}>
-      {/* Main image — same box as before (col-span-2, 300/340px, 15px radius) */}
-      <div className="group relative col-span-2 overflow-hidden rounded-[15px] shadow-sm">
+      {/* Main image — same box; arrows/dots use the home gallery classes */}
+      <div className="relative col-span-2 overflow-hidden rounded-[15px] shadow-sm">
         <img
           src={src(images[active])}
           alt={`${name} at Soul Surfer Camp, Weligama — photo ${active + 1} of ${count}`}
@@ -46,34 +38,32 @@ export default function RoomPhotos({
           type="button"
           onClick={() => go(-1)}
           aria-label="Previous photo"
-          className={`left-3 ${ARROW}`}
+          className="ss-gal-nav ss-gal-prev"
         >
-          ‹
+          {"‹"}
         </button>
         <button
           type="button"
           onClick={() => go(1)}
           aria-label="Next photo"
-          className={`right-3 ${ARROW}`}
+          className="ss-gal-nav ss-gal-next"
         >
-          ›
+          {"›"}
         </button>
-        <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-1.5">
+        <div className="ss-gal-dots">
           {images.map((_, i) => (
             <button
               key={i}
               type="button"
               onClick={() => setActive(i)}
               aria-label={`Show photo ${i + 1}`}
-              className={`h-1.5 appearance-none !rounded-full !border-0 !p-0 shadow-[0_0_3px_rgba(0,0,0,0.4)] transition-all duration-300 ${
-                i === active ? "w-5 !bg-white" : "w-1.5 !bg-white/60"
-              }`}
+              className={`ss-gal-dot${i === active ? " is-active" : ""}`}
             />
           ))}
         </div>
       </div>
 
-      {/* Two thumbnails — same boxes (130/150px, 12px radius), now clickable */}
+      {/* Two thumbnails — same boxes, clickable */}
       {thumbs.map((i) => (
         <button
           key={i}
