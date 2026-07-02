@@ -86,7 +86,7 @@ export default function RoomsPage() {
 
       {/* Framing + trust line */}
       <section className="bg-ss-cream">
-        <div className="mx-auto max-w-3xl px-6 py-16 text-center">
+        <div className="mx-auto max-w-3xl px-6 py-20 text-center">
           <p className="font-onest text-[17px] leading-relaxed text-ss-body">
             Three brand-new room types — pick the social buzz of a shared dorm, or retreat to a
             private ensuite. Whichever you choose, you're seconds from the sand and share the
@@ -124,7 +124,7 @@ export default function RoomsPage() {
                     loading="lazy"
                     width={800}
                     height={600}
-                    className="col-span-2 h-[300px] w-full rounded-[16px] object-cover shadow-sm sm:h-[340px]"
+                    className="col-span-2 h-[300px] w-full rounded-[15px] object-cover shadow-sm sm:h-[340px]"
                   />
                   {room.images.slice(1).map((img) => (
                     <img
@@ -192,7 +192,7 @@ export default function RoomsPage() {
           <h2 className="mb-8 text-center font-onest text-3xl font-semibold text-ss-espresso sm:text-[34px]">
             Room questions
           </h2>
-          <div className="rounded-[16px] bg-ss-white px-6 shadow-sm sm:px-8">
+          <div className="rounded-[15px] bg-ss-white px-6 shadow-sm sm:px-8">
             {ROOM_FAQ.map((item) => (
               <details
                 key={item.q}
